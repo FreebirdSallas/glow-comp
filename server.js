@@ -1,7 +1,7 @@
 const express = require("express");
 const routes = require("./routes")
 const mongoose = require("mongoose");
-// const routes = require("./routes");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -19,7 +19,7 @@ app.use(routes);
 // })
 
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/infiniteWell");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/infiniteWell");
 
 
 // Start the API server

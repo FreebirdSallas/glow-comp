@@ -1,26 +1,36 @@
 {
   "name": "glow-comp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Full stack application using MongoDB, Express, React, and Node.js",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && yarn install",
+    "build": "cd client && yarn run build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FreebirdSallas/glow-comp.git"
   },
-  "author": "",
+  "author": "Cierra, Cohen, Jason",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/FreebirdSallas/glow-comp/issues"
   },
   "homepage": "https://github.com/FreebirdSallas/glow-comp#readme",
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "express": "^4.17.1",
-    "if-env": "^1.0.4",
-    "mongoose": "^5.7.5"
+    "mongoose": "^5.7.5",
+    "if-env": "^1.0.4"
   }
 }

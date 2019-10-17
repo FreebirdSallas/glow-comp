@@ -1,17 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import {
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarNav,
-  MDBNavItem,
-  MDBNavLink,
-  MDBNavbarToggler,
-  MDBCollapse,
+
   MDBMask,
   MDBRow,
   MDBCol,
-  MDBFormInline,
   MDBBtn,
   MDBView,
   MDBContainer
@@ -34,62 +26,10 @@ class HomePage extends React.Component {
     document.querySelector("nav").style.height = "auto";
   }
   render() {
-    const overlay = (
-      <div
-        id="sidenav-overlay"
-        style={{ backgroundColor: "dark" }}
-        onClick={this.handleTogglerClick}
-      />
-    );
+   
     return (
-      <>
-        <Router>
-          <div>
-            <MDBNavbar
-              color="blue accent-1"
-              dark
-              expand="md"
-              fixed="top"
-              scrolling
-              transparent
-            >
-              <MDBContainer>
-                <MDBNavbarBrand>
-                  <strong className="indigo-text">Infinite Wellness</strong>
-                </MDBNavbarBrand>
-                <MDBNavbarToggler onClick={this.handleTogglerClick} />
-                <MDBCollapse isOpen={this.state.collapsed} navbar>
-                  <MDBNavbarNav left>
-                    <MDBNavItem active>
-                      <MDBNavLink to="/" className='indigo-text'>Home</MDBNavLink>
-                    </MDBNavItem>
-                    <MDBNavItem>
-                      <MDBNavLink to="#!" className='indigo-text'>Link</MDBNavLink>
-                    </MDBNavItem>
-                    <MDBNavItem>
-                      <MDBNavLink to="#!" className='indigo-text'>Profile</MDBNavLink>
-                    </MDBNavItem>
-                  </MDBNavbarNav>
-                  <MDBNavbarNav right>
-                    <MDBNavItem>
-                      <MDBFormInline waves>
-                        <div className="md-form my-0">
-                          <input
-                            className="form-control mr-sm-2"
-                            type="text"
-                            placeholder="Search"
-                            aria-label="Search"
-                          />
-                        </div>
-                      </MDBFormInline>
-                    </MDBNavItem>
-                  </MDBNavbarNav>
-                </MDBCollapse>
-              </MDBContainer>
-            </MDBNavbar>
-            {this.state.collapsed && overlay}
-          </div>
-        </Router>
+      
+     <div>
         <MDBView
           src={`https://mdbootstrap.com/img/Photos/Others/images/76.jpg`}
           fixed
@@ -179,7 +119,7 @@ class HomePage extends React.Component {
             </MDBRow>
           </MDBContainer>
         </main>
-      </>
+        </div>
     );
   }
 }

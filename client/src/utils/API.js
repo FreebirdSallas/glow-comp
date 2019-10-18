@@ -24,6 +24,7 @@ export default {
   getEvent: function(id){
       return axios.get('/api/events/' + id)
   },
-  getUserEvent:function(id){}
+  getUserEvent:function(id){},
+  
   
 };

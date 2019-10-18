@@ -20,10 +20,12 @@ import {
   MDBTabPane,
 } from 'mdbreact';
 import './assets/css/LogInRegModal.css';
+import Profile from './pages/Profile';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import API from './utils/API';
 
+// Form input text color
 const formInput = {
   color: '#000'
 };
@@ -366,6 +368,8 @@ class App extends Component {
             <Route path="/">
               <Home />
             </Route>
+            <Route path="/profile" component={Profile} />
+
           </Switch>
 
         </Router>

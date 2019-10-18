@@ -176,7 +176,7 @@ class App extends Component {
                     </MDBTabPane>
                     <MDBTabPane tabId="2">
                         <MDBModalBody className="mx-3">
-                            <form className="mx-3 text-muted">
+                            <form className="mx-3 grey-text">
                                 <MDBInput
                                     label="Your email"
                                     icon="envelope"

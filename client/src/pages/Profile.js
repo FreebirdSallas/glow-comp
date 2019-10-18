@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {MDBMask, MDBRow, MDBCol, MDBBtn, MDBView, MDBContainer} from 'mdbreact';
-import API from '../utils/API';
+// import {MDBMask, MDBRow, MDBCol, MDBBtn, MDBView, MDBContainer} from 'mdbreact';
+// import API from '../utils/API';
 
 class Profile extends React.Component {
   constructor (props) {
@@ -8,11 +8,19 @@ class Profile extends React.Component {
 
     this.state = {
       loggedIn: false,
+      email: '',
     };
   }
 
   componentDidMount () {
-    // API.
+    // API call to see if a user id is saved in the express session
+  }
+  render () {
+    return (
+      <div>
+        <h1>h</h1>
+      </div>
+    );
   }
 }
 

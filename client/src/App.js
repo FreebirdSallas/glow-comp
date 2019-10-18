@@ -19,12 +19,12 @@ import {
   MDBTabContent,
   MDBTabPane,
 } from 'mdbreact';
-
+import Profile from './pages/Profile';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import API from './utils/API';
 
-class App extends Component {
+class App extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
@@ -331,7 +331,8 @@ class App extends Component {
             <Route path="/">
               <Home />
             </Route>
-            <Route path="/profile"></Route>
+            <Route path="/profile" component={Profile} />
+
           </Switch>
 
         </Router>

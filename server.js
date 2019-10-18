@@ -30,6 +30,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use(session(sess));
+app.use(passport.initialize())
+app.use(passport.session());
+
 
 // Add routes, both API and view
 app.use(routes);

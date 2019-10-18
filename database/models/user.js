@@ -12,6 +12,10 @@ const userSchema = new Schema({
         required: true,
         min: [6, "Password must be at least 6 characters"],
         max: 24
+    },
+    events: {
+        type: Schema.Types.ObjectId,
+        ref: "Event"
     }
 
 });

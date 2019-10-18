@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "// If You want to install mdbreact from our GitLab repository, please replace '4.21.1' with gitURL provided here ->": "git+https://oauth2:<YOUR-TOKEN-GOES-HERE>@git.mdbootstrap.com/mdb/react/re-pro.git",
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "mdbreact": "./mdbreact-4.21.1.tgz",
     "react": "^16.9.0",

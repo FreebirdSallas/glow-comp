@@ -1,9 +1,25 @@
 const express = require('express');
-
-const mongoose = require('mongoose');
-const routes = require('./routes')
+const session = require("express-session");
+const MongoStore = require('connect-mongo')(session);
+const dbConnection = require("./database");
+const routes = require('./routes');
 const app = express();
+
 const PORT = process.env.PORT || 3001;
+
+var sess = {
+  secret: 'your mother doesn"t love you',
+  store: new MongoStore({ mongooseConnection: dbConnection }),
+  cookie:{},
+  resave: false,
+  saveUninitialized: false
+}
+
+if(app.get('env') === 'production'){
+  app.set('trust proxy', 1)
+  sess.cookie.secure = true
+}
+
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -13,11 +29,13 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
+
+app.use(session(sess));
+
 // Add routes, both API and view
 app.use(routes);
 
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/infiniteWellness');
+
 
 // Start the API server
 app.listen(PORT, function() {

@@ -13,7 +13,7 @@ export default {
   deleteUser: function(id) {
     return axios.delete('/api/users/' + id);
   },
-  // Saves a user to the database
+  // Saves a user to the databasee
   saveUser: function(userData) {
     return axios.post('/api/users', userData);
   }

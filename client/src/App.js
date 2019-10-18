@@ -19,7 +19,7 @@ import {
   MDBTabContent,
   MDBTabPane
 } from "mdbreact";
-import "./SignUpModal.css";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -28,6 +28,7 @@ import {
 import Home from "./pages/Home";
 
 class App extends Component {
+  
   state = {
     collapsed: false,
     modal1: false,
@@ -105,10 +106,10 @@ class App extends Component {
                   </MDBNavbarNav>
                   <MDBNavbarNav right>
                     <MDBNavItem>
-                     <MDBBtn rounded onClick={this.toggle(1)}>
-                      Login/Register
-                     </MDBBtn>
-                     <MDBModal className="form-cascading" isOpen={this.state.modal1} toggle={this.toggle(1)}>
+                      <MDBBtn rounded onClick={this.toggle(1)}>
+                          Login/Register
+                      </MDBBtn>
+                    <MDBModal className="form-cascading" isOpen={this.state.modal1} toggle={this.toggle(1)}>
                 <MDBNav
                     tabs
                     className="md-tabs nav-justified tabs-2 light-blue darken-3"
@@ -175,7 +176,7 @@ class App extends Component {
                     </MDBTabPane>
                     <MDBTabPane tabId="2">
                         <MDBModalBody className="mx-3">
-                            <form className=" mx-3 grey-text">
+                            <form className="mx-3 grey-text">
                                 <MDBInput
                                     label="Your email"
                                     icon="envelope"
@@ -207,10 +208,10 @@ class App extends Component {
                                     CLOSE
                                 </MDBBtn>
                             </MDBRow>
-                        </MDBModalFooter>
-                    </MDBTabPane>
-                </MDBTabContent>
-            </MDBModal>
+                            </MDBModalFooter>
+                        </MDBTabPane>
+                    </MDBTabContent>
+                </MDBModal>
                     </MDBNavItem>
                   </MDBNavbarNav>
                 </MDBCollapse>

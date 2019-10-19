@@ -1,6 +1,5 @@
-import React from "react";
+import React, { Component }  from "react";
 import {
-
   MDBMask,
   MDBRow,
   MDBCol,
@@ -9,7 +8,7 @@ import {
   MDBContainer
 } from "mdbreact";
 
-class HomePage extends React.Component {
+class HomePage extends Component {
   state = {
     collapsed: false
   };

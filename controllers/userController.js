@@ -12,7 +12,13 @@ module.exports = {
   findById: function(req, res) {
     db.User
       .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
+      .populate("events")
+      .then(dbModel => {
+        // creating a copy of the object and sending it to the front without the pass hash
+        var minusPass = Object.assign({}, dbModel);
+        delete minusPass._doc.password;
+        res.json(minusPass)
+      })
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {

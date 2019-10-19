@@ -17,7 +17,13 @@ module.exports = {
   create: function (req, res) {
     db.Event
       .create (req.body)
-      .then (dbModel => res.json (dbModel))
+      .then (dbModel => {
+      console.log(dbModel)
+      return db.User.findOneAndUpdate({_id: dbModel.customer}, { $push: { events: dbModel._id }} )
+      
+      }).then(resp => {
+        res.json(resp)
+      })
       .catch (err => res.status (422).json (err));
   },
   update: function (req, res) {

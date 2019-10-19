@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 const options = {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useFindAndModify: true,
+    useFindAndModify: false,
     useUnifiedTopology: true
   };
   // Connect to the Mongo DB

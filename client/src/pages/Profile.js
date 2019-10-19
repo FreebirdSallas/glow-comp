@@ -3,9 +3,10 @@ import {
     MDBBtn,
     MDBView,
     MDBMask,
-    MDBContainer
+    MDBContainer,
+    MDBDataTable
 } from "mdbreact";
-// import API from '../utils/API';
+import API from '../utils/API';
 
 class ProfilePage extends Component {
     constructor (props) {
@@ -13,7 +14,8 @@ class ProfilePage extends Component {
         this.state = {
             loggedIn: false,
             email: '',
-            collapsed: false
+            collapsed: false,
+            userEvents: []
         };
     }
 
@@ -25,12 +27,28 @@ class ProfilePage extends Component {
     componentDidMount() {
         document.querySelector("nav").style.height = "65px";
         // API call to see if a user id is saved in the express session
+        API.isLoggedIn().then(response => {
+            console.log(response);
+           
+            if(response.data.user){
+                API.getUser(response.data.user._id).then(response => {
+                    console.log(response.data._doc)
+                    // this.setState({
+                    //     userEvents: response.data._doc
+                    // })
+                })
+            }
+        })
     }
     componentWillUnmount() {
         document.querySelector("nav").style.height = "auto";
     }
 
+
+
     render() {
+
+        
         return (
 
             <div>
@@ -38,11 +56,16 @@ class ProfilePage extends Component {
                     src={`https://mdbootstrap.com/img/Photos/Others/images/76.jpg`}
                     fixed
                 >
-                    <MDBMask className="rgba-white-light d-flex justify-content-center align-items-center">
-                        <MDBContainer>
+                    <MDBMask className="rgba-white-light">
+                        <MDBContainer className="bg-light">
                             <MDBBtn>
                                 Profile Page!
                             </MDBBtn>
+                            <MDBDataTable 
+                                striped
+                                bordered
+                                hover
+                                />
                         </MDBContainer>
                     </MDBMask>
                 </MDBView>

@@ -1,0 +1,21 @@
+/* Cascading modal register / login  */
+.form-cascading .modal-footer{
+  border-top: none;
+  flex-direction: column;
+}
+
+.form-cascading .modal-content{
+  background-image: url('../img/foggymountains.jpeg');
+}
+
+.form-cascading #options {
+  margin-right: auto;
+}
+
+.form-cascading #options p {
+  margin-bottom: 0;
+}
+
+.form-cascading #options p span{
+  cursor: pointer;
+}

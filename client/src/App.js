@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   MDBNav,
   MDBNavbar,
@@ -18,11 +18,11 @@ import {
   MDBIcon,
   MDBTabContent,
   MDBTabPane,
+  MDBFooter
 } from 'mdbreact';
 import './assets/css/LogInRegModal.css';
-import Profile from './pages/Profile';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import Home from './pages/Home';
+import { BrowserRouter as Router} from 'react-router-dom';
+import Routes from './Routes';
 import API from './utils/API';
 
 // Form input text color
@@ -121,9 +121,9 @@ class App extends Component {
     );
 
     return (
-      <div>
-        <Router>
-          <div>
+      
+      <Router>
+        <div>
 
             {/* Navbar with brand and links */}
 
@@ -150,6 +150,9 @@ class App extends Component {
                     </MDBNavItem>
                     <MDBNavItem>
                       <MDBNavLink to="/schedule" className="indigo-text">Schedule</MDBNavLink>
+                    </MDBNavItem>
+                    <MDBNavItem>
+                      <MDBNavLink to="/services" className="indigo-text">Services</MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem>
                       <MDBNavLink to="/profile" className="indigo-text">Profile</MDBNavLink>
@@ -362,18 +365,15 @@ class App extends Component {
               </MDBContainer>
             </MDBNavbar>
             {this.state.collapsed && overlay}
+                <Routes />
+            <MDBFooter color='indigo'>
+              <p className='footer-copyright mb-0 py-3 text-center'>
+                &copy; {new Date().getFullYear()} Copyright:
+                <a href='https://github.com/novakjason'> Jason Novak </a>
+              </p>
+            </MDBFooter>
           </div>
-
-          <Switch>
-            <Route path="/">
-              <Home />
-            </Route>
-            <Route path="/profile" component={Profile} />
-
-          </Switch>
-
-        </Router>
-      </div>
+      </Router>
     );
   }
 }

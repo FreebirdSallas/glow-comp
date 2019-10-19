@@ -1,8 +1,14 @@
-import React from 'react';
-import {MDBMask, MDBRow, MDBCol, MDBBtn, MDBView, MDBContainer} from 'mdbreact';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import React, { Component }  from "react";
+import {
+  MDBMask,
+  MDBRow,
+  MDBCol,
+  MDBBtn,
+  MDBView,
+  MDBContainer
+} from "mdbreact";
 
-class HomePage extends React.Component {
+class HomePage extends Component {
   state = {
     collapsed: false,
   };

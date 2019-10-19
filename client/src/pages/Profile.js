@@ -4,8 +4,8 @@ import {
     MDBView,
     MDBMask,
     MDBContainer,
-    MDBDataTable
 } from "mdbreact";
+import EventTable from '../comps/EventTable';
 import API from '../utils/API';
 
 class ProfilePage extends Component {
@@ -15,7 +15,7 @@ class ProfilePage extends Component {
             loggedIn: false,
             email: '',
             collapsed: false,
-            userEvents: []
+            rows: []
         };
     }
 
@@ -33,10 +33,12 @@ class ProfilePage extends Component {
             if(response.data.user){
                 API.getUser(response.data.user._id).then(response => {
                     console.log(response.data._doc)
-                    // this.setState({
-                    //     userEvents: response.data._doc
-                    // })
+                    this.setState({
+                        rows: response.data._doc.events
+                    })
                 })
+            } else{
+                //something that removes table and tells them to log in 
             }
         })
     }
@@ -47,7 +49,6 @@ class ProfilePage extends Component {
 
 
     render() {
-
         
         return (
 
@@ -56,16 +57,13 @@ class ProfilePage extends Component {
                     src={`https://mdbootstrap.com/img/Photos/Others/images/76.jpg`}
                     fixed
                 >
-                    <MDBMask className="rgba-white-light">
+                    <MDBMask className="rgba-white-light d-flex justify-content-center align-items-center">
                         <MDBContainer className="bg-light">
                             <MDBBtn>
                                 Profile Page!
                             </MDBBtn>
-                            <MDBDataTable 
-                                striped
-                                bordered
-                                hover
-                                />
+                          <EventTable rows={this.state.rows} />
+                            
                         </MDBContainer>
                     </MDBMask>
                 </MDBView>

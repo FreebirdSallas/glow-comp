@@ -93,8 +93,19 @@ class App extends Component {
       });
   };
 
-  handleLogin = () => {
-    console.log('USER LOGGED IN!');
+  handleLogin = event => {
+    event.preventDefault ();
+    API.loginUser({
+      email: this.state.email,
+      password: this.state.password
+    }).then(response => {
+      if(response.status === 200){
+        this.setState ({
+          loggedIn: true,
+        });
+      }
+    })
+
     // code here to validate user email and password, then take user to profile page
   };
 

@@ -25,6 +25,13 @@ export default {
       return axios.get('/api/events/' + id)
   },
   getUserEvent:function(id){},
+
+  loginUser: function(userPlusPass) {
+    return axios.post('/auth/user/login', userPlusPass)
+  },
+  isLoggedIn: function(){
+    return axios.get('/auth/user')
+  }
   
   
 };

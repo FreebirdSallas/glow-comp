@@ -1,5 +1,6 @@
-const db = require("../database");
+const db = require("../database/models");
 const LocalStrategy = require("passport-local").Strategy;
+
 
 const strat = new LocalStrategy(
     {
@@ -11,10 +12,10 @@ const strat = new LocalStrategy(
                 return done(err)
             }
             if(!user) {
-                return done(null, false, { message: 'Incorrect username bruh'} )
+                return done(null, false, { message: 'User Not Found'} )
             }
-            if(!user.checkPassword(password)){
-                return done(null, false, { message: 'wrong pass bud'})
+            if(!user.checkPass(password)){
+                return done(null, false, { message: 'Incorrect Password'})
             }
             return done(null, user)
         })

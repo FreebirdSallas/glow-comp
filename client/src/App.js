@@ -95,6 +95,7 @@ class App extends Component {
 
   handleLogin = event => {
     event.preventDefault ();
+    console.log("Logging in user....")
     API.loginUser({
       email: this.state.email,
       password: this.state.password
@@ -103,9 +104,13 @@ class App extends Component {
         this.setState ({
           loggedIn: true,
         });
-      }
-    })
+        console.log("USER LOGGED IN")
+      } else if (response.status === 401){
+        console.log("incorrect password");
 
+        //changes to css to reflect incorrect password
+      }
+    }).catch(err => console.log(`error: ${err}`));
     // code here to validate user email and password, then take user to profile page
   };
 
@@ -251,7 +256,7 @@ class App extends Component {
                               <MDBBtn
                                 className="mb-4"
                                 color="indigo"
-                                onClick={this.handleLogIn}
+                                onClick={this.handleLogin}
                                >
                                 LOG IN
                                 {' '}

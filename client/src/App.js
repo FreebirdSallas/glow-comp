@@ -25,6 +25,7 @@ import { BrowserRouter as Router} from 'react-router-dom';
 import Routes from './Routes';
 import API from './utils/API';
 
+// Form input text color
 const formInput = {
   color: '#000'
 };

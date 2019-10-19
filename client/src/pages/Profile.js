@@ -5,11 +5,17 @@ import {
     MDBMask,
     MDBContainer
 } from "mdbreact";
+// import API from '../utils/API';
 
 class ProfilePage extends Component {
-    state = {
-        collapsed: false
-    };
+    constructor (props) {
+        super (props);
+        this.state = {
+            loggedIn: false,
+            email: '',
+            collapsed: false
+        };
+    }
 
     handleTogglerClick = () => {
         this.setState({
@@ -18,6 +24,7 @@ class ProfilePage extends Component {
     };
     componentDidMount() {
         document.querySelector("nav").style.height = "65px";
+        // API call to see if a user id is saved in the express session
     }
     componentWillUnmount() {
         document.querySelector("nav").style.height = "auto";

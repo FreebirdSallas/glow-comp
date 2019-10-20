@@ -8,7 +8,6 @@ class ProfilePage extends Component {
     super (props);
     this.state = {
       rows: [],
-      isLoggedIn: false,
     };
   }
 
@@ -16,7 +15,7 @@ class ProfilePage extends Component {
     API.isLoggedIn ().then (response => {
       console.log (response);
 
-      if (response.data.user) {
+      if (response.data.user._id) {
         API.getUser (response.data.user._id).then (response => {
           console.log (response.data._doc);
           this.setState ({

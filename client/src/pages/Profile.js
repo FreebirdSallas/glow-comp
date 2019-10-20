@@ -1,75 +1,48 @@
-import React, { Component } from "react";
-import {
-    MDBBtn,
-    MDBView,
-    MDBMask,
-    MDBContainer,
-} from "mdbreact";
+import React, {Component} from 'react';
+import {MDBBtn, MDBView, MDBMask, MDBContainer} from 'mdbreact';
 import EventTable from '../comps/EventTable';
-import API from '../utils/API';
 
 class ProfilePage extends Component {
-    constructor (props) {
-        super (props);
-        this.state = {
-            loggedIn: false,
-            email: '',
-            collapsed: false,
-            rows: []
-        };
-    }
-
-    handleTogglerClick = () => {
-        this.setState({
-            collapsed: !this.state.collapsed
-        });
+  constructor (props) {
+    super (props);
+    this.state = {
+      loggedIn: false,
+      email: '',
+      collapsed: false,
+      rows: [],
     };
-    componentDidMount() {
-        document.querySelector("nav").style.height = "65px";
-        // API call to see if a user id is saved in the express session
-        API.isLoggedIn().then(response => {
-            console.log(response);
-           
-            if(response.data.user){
-                API.getUser(response.data.user._id).then(response => {
-                    console.log(response.data._doc)
-                    this.setState({
-                        rows: response.data._doc.events
-                    })
-                })
-            } else{
-                //something that removes table and tells them to log in 
-            }
-        })
-    }
-    componentWillUnmount() {
-        document.querySelector("nav").style.height = "auto";
-    }
+  }
 
+  handleTogglerClick = () => {
+    this.setState ({
+      collapsed: !this.state.collapsed,
+    });
+  };
+  componentDidMount () {}
+  componentWillUnmount () {
+    document.querySelector ('nav').style.height = 'auto';
+  }
 
+  render () {
+    return (
+      <div>
+        <MDBView
+          src={`https://mdbootstrap.com/img/Photos/Others/images/76.jpg`}
+          fixed
+        >
+          <MDBMask className="rgba-white-light d-flex justify-content-center align-items-center">
+            <MDBContainer className="bg-light">
+              <MDBBtn>
+                Profile Page!
+              </MDBBtn>
+              <EventTable rows={this.state.rows} />
 
-    render() {
-        
-        return (
-
-            <div>
-                <MDBView
-                    src={`https://mdbootstrap.com/img/Photos/Others/images/76.jpg`}
-                    fixed
-                >
-                    <MDBMask className="rgba-white-light d-flex justify-content-center align-items-center">
-                        <MDBContainer className="bg-light">
-                            <MDBBtn>
-                                Profile Page!
-                            </MDBBtn>
-                          <EventTable rows={this.state.rows} />
-                            
-                        </MDBContainer>
-                    </MDBMask>
-                </MDBView>
-            </div>
-        );
-    }
+            </MDBContainer>
+          </MDBMask>
+        </MDBView>
+      </div>
+    );
+  }
 }
 
 export default ProfilePage;

@@ -15,7 +15,14 @@ const eventSchema = new Schema ({
   date: {
     type: Date,
     required: true,
-    default: Date.now(),
+  },
+  startTime: {
+    type: Date,
+    //required: true
+  },
+  endTime: {
+    type: Date,
+    //required: true
   },
 });
 

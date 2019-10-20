@@ -29,6 +29,7 @@ class SchedulePage extends Component {
     });
   }
   onChange = date => this.setState ({date});
+  
   render () {
     const style = {
       backgroundColor: 'white',
@@ -49,7 +50,6 @@ class SchedulePage extends Component {
                 onChange={this.onChange}
                 value={this.state.date}
                 isCalendarOpen
-                yearAriaLabel
               />
               <MDBBtn>
                 Schedule!

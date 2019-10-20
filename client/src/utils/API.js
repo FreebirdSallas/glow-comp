@@ -21,17 +21,18 @@ export default {
   getEvents: function () {
     return axios.get ('/api/events');
   },
-  getEvent: function(id){
-      return axios.get('/api/events/' + id)
+  getEvent: function (id) {
+    return axios.get ('/api/events/' + id);
   },
-  getUserEvent:function(id){},
+  getUserEvent: function (id) {},
 
-  loginUser: function(userPlusPass) {
-    return axios.post('/auth/user/login', userPlusPass)
+  loginUser: function (userPlusPass) {
+    return axios.post ('/auth/user/login', userPlusPass);
   },
-  isLoggedIn: function(){
-    return axios.get('/auth/user')
-  }
-  
-  
+  isLoggedIn: function () {
+    return axios.get ('/auth/user');
+  },
+  createEvent: function (eventData) {
+    return axios.post ('/api/events', eventData);
+  },
 };

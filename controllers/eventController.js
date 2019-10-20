@@ -15,14 +15,19 @@ module.exports = {
       .catch (err => res.status (422).json (err));
   },
   create: function (req, res) {
+    //in order to even create an event, you need the _id of a user to add it to
+    // events at minumum need a customer id & massType
     db.Event
       .create (req.body)
       .then (dbModel => {
-      console.log(dbModel)
-      return db.User.findOneAndUpdate({_id: dbModel.customer}, { $push: { events: dbModel._id }} )
-      
-      }).then(resp => {
-        res.json(resp)
+        console.log (dbModel);
+        return db.User.findOneAndUpdate (
+          {_id: dbModel.customer},
+          {$push: {events: dbModel._id}}
+        );
+      })
+      .then (resp => {
+        res.json (resp);
       })
       .catch (err => res.status (422).json (err));
   },

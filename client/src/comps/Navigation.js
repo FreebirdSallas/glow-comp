@@ -79,9 +79,8 @@ class Navigation extends React.Component {
       .then (response => {
         console.log (response);
         if (response.status === 200) {
-          this.setState ({
-            loggedIn: true,
-          });
+          this.setState ({});
+
           // code here to take user to PROFILE page once registered
         }
       })
@@ -122,6 +121,7 @@ class Navigation extends React.Component {
 
   componentDidMount () {
     document.querySelector ('nav').style.height = '65px';
+    
   }
   componentWillUnmount () {
     document.querySelector ('nav').style.height = 'auto';

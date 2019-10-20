@@ -7,6 +7,13 @@ import API from './utils/API';
 import Navigation from './comps/Navigation';
 
 class App extends Component {
+    constructor (props) {
+        super (props);
+        this.state = {
+          email: '',
+          loggedIn: false,
+        };
+      }
   componentDidMount () {
     API.isLoggedIn ().then (response => {
       console.log (response);

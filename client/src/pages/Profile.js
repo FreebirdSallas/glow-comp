@@ -6,22 +6,11 @@ class ProfilePage extends Component {
   constructor (props) {
     super (props);
     this.state = {
-      loggedIn: false,
-      email: '',
-      collapsed: false,
-      rows: [],
+     
     };
   }
 
-  handleTogglerClick = () => {
-    this.setState ({
-      collapsed: !this.state.collapsed,
-    });
-  };
-  componentDidMount () {}
-  componentWillUnmount () {
-    document.querySelector ('nav').style.height = 'auto';
-  }
+ 
 
   render () {
     return (

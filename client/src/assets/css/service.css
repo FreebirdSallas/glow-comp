@@ -2,3 +2,14 @@
     height: 235.2px;
     width: 400px;
 }
+.card-body{
+    height: 275px;
+}
+.dropdown{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.header-service{
+    margin-top: 125px;
+}

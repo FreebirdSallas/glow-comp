@@ -34,7 +34,7 @@ class HomePage extends Component {
           <MDBMask className="rgba-white-light d-flex justify-content-center align-items-center">
             <MDBContainer>
               <MDBRow>
-                <MDBCol md="12" className="mb-4 white-text text-center">
+                <MDBCol md="12" className="md-4 white-text text-center">
                   <h1 className="display-3 mb-0 pt-md-5 pt-5 white-text font-weight-bold">
                     INFINITE{' '}
                     <span className="indigo-text font-weight-bold">

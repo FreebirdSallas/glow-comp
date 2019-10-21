@@ -13,6 +13,7 @@ class SchedulePage extends Component {
     };
   }
   componentDidMount () {
+    document.querySelector("nav").style.height = "65px";
     API.isLoggedIn ().then (response => {
       console.log (response);
 
@@ -28,6 +29,11 @@ class SchedulePage extends Component {
       }
     });
   }
+
+  componentWillUnmount() {
+    document.querySelector("nav").style.height = "auto";
+  }
+
   onChange = date => this.setState ({date});
   
   render () {

@@ -12,6 +12,7 @@ class ProfilePage extends Component {
   }
 
   componentDidMount () {
+    document.querySelector("nav").style.height = "65px";
     API.isLoggedIn ().then (response => {
       console.log (response);
 
@@ -26,6 +27,10 @@ class ProfilePage extends Component {
         //something that removes table and tells them to log in
       }
     });
+  }
+
+  componentWillUnmount() {
+    document.querySelector("nav").style.height = "auto";
   }
 
   render () {

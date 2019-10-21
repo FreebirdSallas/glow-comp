@@ -35,7 +35,7 @@ class App extends Component {
   render () {
     return (
       <Router>
-        <Navigation />
+        <Navigation loggedIn={this.state.loggedIn}/>
         <Routes />
 
         <MDBFooter color="indigo">

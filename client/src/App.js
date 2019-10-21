@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import {MDBFooter} from 'mdbreact';
-import './assets/css/LogInRegModal.css';
 import {BrowserRouter as Router} from 'react-router-dom';
+import Navigation from './comps/Navigation';
 import Routes from './Routes';
 import API from './utils/API';
-import Navigation from './comps/Navigation';
 
 class App extends Component {
   constructor (props) {

@@ -4,7 +4,7 @@
   "description": "Full stack application using MongoDB, Express, React, and Node.js",
   "main": "server.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start": "if-env NODE_ENV=production && npm run start:prod || yarn start:dev",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
@@ -37,6 +37,7 @@
     "mongoose": "^5.7.5",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "react-calendar": "^2.19.2"
+    "react-calendar": "^2.19.2",
+    "react-datetime-picker": "^2.7.1"
   }
 }

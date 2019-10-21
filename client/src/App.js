@@ -22,9 +22,12 @@ class App extends Component {
           console.log (response.data._doc);
           this.setState ({
             rows: response.data._doc.events,
+            loggedIn: true
           });
+         
         });
       } else {
+        
       }
     });
   }

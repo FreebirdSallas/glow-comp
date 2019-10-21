@@ -15,7 +15,7 @@ class ProfilePage extends Component {
     API.isLoggedIn ().then (response => {
       console.log (response);
 
-      if (response.data.user._id) {
+      if (response.data.user) {
         API.getUser (response.data.user._id).then (response => {
           console.log (response.data._doc);
           this.setState ({

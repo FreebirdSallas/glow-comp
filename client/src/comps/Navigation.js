@@ -114,7 +114,12 @@ class Navigation extends React.Component {
   };
 
   handleLogOut = () => {
-    console.log('User logged out!');
+    API.logUserOut().then(response => {
+      console.log(response)
+      this.setState({
+        loggedIn: false
+      })
+    })
   }
 
   handleTogglerClick = () => {
@@ -125,6 +130,7 @@ class Navigation extends React.Component {
 
   componentDidMount () {
     document.querySelector ('nav').style.height = '65px';
+    console.log(this.state)
     
   }
   componentWillUnmount () {
@@ -182,7 +188,7 @@ class Navigation extends React.Component {
               {/* LogIn/Register Navbar Button */}
               <MDBNavbarNav right>
                 <MDBNavItem>
-                  {this.loggedIn && (
+                  {!this.state.loggedIn ?  (
                     <MDBBtn
                       rounded
                       className="btn-indigo"
@@ -190,8 +196,8 @@ class Navigation extends React.Component {
                     >
                       Login/Register
                     </MDBBtn>
-                  )}
-                  {!this.loggedIn && (
+                  ) : 
+                  (
                     <MDBBtn
                       rounded
                       className="btn-indigo"

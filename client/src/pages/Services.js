@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import {
   MDBIcon,
   MDBBtn,
@@ -16,35 +16,30 @@ import {
   MDBDropdown,
   MDBDropdownToggle,
   MDBDropdownMenu,
-  MDBDropdownItem
-} from "mdbreact";
-import image from "../assets/img/massage-3795691_1920.jpg";
+  MDBDropdownItem,
+} from 'mdbreact';
+import image from '../assets/img/massage-3795691_1920.jpg';
 // Image by <a href="https://pixabay.com/users/anna3416-2499762/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3795691">Anna Mikkelgaard</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3795691">Pixabay</a>
 
-import imageTwo from "../assets/img/essential-oils-1433692_1920.jpg";
+import imageTwo from '../assets/img/essential-oils-1433692_1920.jpg';
 // Image by <a href="https://pixabay.com/users/monicore-1499084/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1851027">monicore</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1851027">Pixabay</a>
 
-import imageThree from "../assets/img/massage-2722936_1920.jpg";
+import imageThree from '../assets/img/massage-2722936_1920.jpg';
 // Image by <a href="https://pixabay.com/users/whitesession-4645995/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2722936">Angelo Esslinger</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2722936">Pixabay</a>
 
-import "../assets/css/service.css";
+import '../assets/css/service.css';
 class ServicesPage extends Component {
   state = {
-    collapsed: false
+    collapsed: false,
   };
 
   handleTogglerClick = () => {
-    this.setState({
-      collapsed: !this.state.collapsed
+    this.setState ({
+      collapsed: !this.state.collapsed,
     });
   };
-  componentDidMount() {
-    document.querySelector("nav").style.height = "65px";
-  }
-  componentWillUnmount() {
-    document.querySelector("nav").style.height = "auto";
-  }
-  render() {
+
+  render () {
     return (
       <div>
         <MDBView
@@ -66,10 +61,14 @@ class ServicesPage extends Component {
                 </MDBCol>
               </MDBRow>
               <MDBRow className="service-cards">
-                <MDBCol md='4'>
+                <MDBCol md="4">
                   <MDBAnimation reveal type="fadeInLeft">
                     <MDBCard>
-                      <MDBCardImage className="massage-img img-fluid" src={image} waves />
+                      <MDBCardImage
+                        className="massage-img img-fluid"
+                        src={image}
+                        waves
+                      />
                       <MDBCardBody>
                         <MDBCardTitle>Deep Tissue</MDBCardTitle>
                         <MDBCardText>
@@ -84,7 +83,9 @@ class ServicesPage extends Component {
                             <MDBIcon far icon="clock" />
                           </MDBDropdownToggle>
                           <MDBDropdownMenu basic>
-                            <MDBDropdownItem header>Session Durations</MDBDropdownItem>
+                            <MDBDropdownItem header>
+                              Session Durations
+                            </MDBDropdownItem>
                             <MDBDropdownItem>60 min</MDBDropdownItem>
                             <MDBDropdownItem>90 min</MDBDropdownItem>
                             <MDBDropdownItem>120 min</MDBDropdownItem>
@@ -94,10 +95,14 @@ class ServicesPage extends Component {
                     </MDBCard>
                   </MDBAnimation>
                 </MDBCol>
-                <MDBCol md='4'>
+                <MDBCol md="4">
                   <MDBAnimation reveal type="fadeInDown">
                     <MDBCard>
-                      <MDBCardImage className="massage-img img-fluid" src={imageTwo} waves />
+                      <MDBCardImage
+                        className="massage-img img-fluid"
+                        src={imageTwo}
+                        waves
+                      />
                       <MDBCardBody>
                         <MDBCardTitle>Shiatsu</MDBCardTitle>
                         <MDBCardText>
@@ -110,7 +115,9 @@ class ServicesPage extends Component {
                             <MDBIcon far icon="clock" />
                           </MDBDropdownToggle>
                           <MDBDropdownMenu basic>
-                            <MDBDropdownItem header>Session Durations</MDBDropdownItem>
+                            <MDBDropdownItem header>
+                              Session Durations
+                            </MDBDropdownItem>
                             <MDBDropdownItem>90 min</MDBDropdownItem>
                             <MDBDropdownItem>120 min</MDBDropdownItem>
                           </MDBDropdownMenu>
@@ -119,10 +126,14 @@ class ServicesPage extends Component {
                     </MDBCard>
                   </MDBAnimation>
                 </MDBCol>
-                <MDBCol md='4'>
+                <MDBCol md="4">
                   <MDBAnimation reveal type="fadeInRight">
                     <MDBCard>
-                      <MDBCardImage className="massage-img img-fluid" src={imageThree} waves />
+                      <MDBCardImage
+                        className="massage-img img-fluid"
+                        src={imageThree}
+                        waves
+                      />
                       <MDBCardBody>
                         <MDBCardTitle>Trigger Piont</MDBCardTitle>
                         <MDBCardText>
@@ -137,7 +148,9 @@ class ServicesPage extends Component {
                             <MDBIcon far icon="clock" />
                           </MDBDropdownToggle>
                           <MDBDropdownMenu basic>
-                            <MDBDropdownItem header>Session Durations</MDBDropdownItem>
+                            <MDBDropdownItem header>
+                              Session Durations
+                            </MDBDropdownItem>
                             <MDBDropdownItem>60 min</MDBDropdownItem>
                             <MDBDropdownItem>90 min</MDBDropdownItem>
                           </MDBDropdownMenu>
@@ -151,7 +164,7 @@ class ServicesPage extends Component {
                 <MDBCol md="12" className="text-center">
                   <MDBBtn>
                     Schedule Now!
-                </MDBBtn>
+                  </MDBBtn>
                 </MDBCol>
               </MDBRow>
             </MDBContainer>

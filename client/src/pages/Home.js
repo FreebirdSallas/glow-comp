@@ -9,15 +9,8 @@ import {
 } from "mdbreact";
 
 class HomePage extends Component {
-  
-  componentDidMount() {
-    document.querySelector("nav").style.height = "65px";
-  }
-  componentWillUnmount() {
-    document.querySelector("nav").style.height = "auto";
-  }
-
   render () {
+    
     return (
       <div>
         <MDBView

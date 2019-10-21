@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {MDBBtn, MDBView, MDBMask, MDBContainer} from 'mdbreact';
 import API from '../utils/API';
-import EventTable from '../comps/EventTable';
+import Weekcal from '../comps/Weekcal';
 import DateTimePicker from 'react-datetime-picker';
+import Calendar from 'react-calendar';
 
 class SchedulePage extends Component {
   constructor (props) {
@@ -13,27 +14,17 @@ class SchedulePage extends Component {
     };
   }
   componentDidMount () {
-    API.isLoggedIn ().then (response => {
-      console.log (response);
-
-      if (response.data.user) {
-        API.getUser (response.data.user._id).then (response => {
-          console.log (response.data._doc);
-          this.setState ({
-            rows: response.data._doc.events,
-          });
-        });
-      } else {
-        //something that removes table and tells them to log in
-      }
-    });
+    const script = document.createElement ('script');
+    script.innerHTML = `scheduler.config.xml_date = '%Y-%m-%d %H:%i';
+    scheduler.init ('scheduler_here', new Date (2018, 0, 20), 'month');`;
+    this.instance.appendChild (script);
   }
   onChange = date => this.setState ({date});
-  
+
   render () {
     const style = {
       backgroundColor: 'white',
-      height: '50vh',
+      height: '75vh',
       borderRadius: 5,
     };
 
@@ -45,17 +36,19 @@ class SchedulePage extends Component {
         >
           <MDBMask className="rgba-white-light d-flex justify-content-center align-items-center">
             <MDBContainer style={style}>
-              <p>Pick a day and time</p>
-              <DateTimePicker
+
+              {/* <p>Pick a day and time</p>
+              <Calendar
                 onChange={this.onChange}
                 value={this.state.date}
                 isCalendarOpen
+                view="decade"
               />
               <MDBBtn>
                 Schedule!
-              </MDBBtn>
-              <h4>Past and future appointments</h4>
-              <EventTable rows={this.state.rows} />
+              </MDBBtn> */}
+              <Weekcal />
+              <div ref={el => (this.instance = el)} />
             </MDBContainer>
           </MDBMask>
         </MDBView>

@@ -20,6 +20,7 @@ import {
   MDBTabPane,
 } from 'mdbreact';
 import '../assets/css/LogInRegModal.css';
+import {Redirect} from 'react-router-dom';
 
 import API from '../utils/API';
 
@@ -39,6 +40,8 @@ class Navigation extends React.Component {
       activeItem: '1',
       email: '',
       password: '',
+      redirect: false,
+      loggedIn: props.loggedIn,
     };
   }
 
@@ -57,6 +60,7 @@ class Navigation extends React.Component {
     }
   };
 
+  // handles keeping track of text the user types in the input boxes
   handleChange = event => {
     const target = event.target;
     const value = target.value;
@@ -65,10 +69,9 @@ class Navigation extends React.Component {
     this.setState ({
       [name]: value,
     });
-    // console.log (this.state.email);
-    // console.log (this.state.password);
   };
 
+  // handles registering a new user
   handleRegister = event => {
     event.preventDefault ();
     API.saveUser ({
@@ -79,8 +82,6 @@ class Navigation extends React.Component {
         console.log (response);
         if (response.status === 200) {
           this.setState ({});
-
-          // code here to take user to PROFILE page once registered
         }
       })
       .catch (err => {
@@ -100,8 +101,8 @@ class Navigation extends React.Component {
         if (response.status === 200) {
           this.setState ({
             loggedIn: true,
+            redirect: true,
           });
-          console.log ('USER LOGGED IN');
         } else if (response.status === 401) {
           console.log ('incorrect password');
 
@@ -119,6 +120,13 @@ class Navigation extends React.Component {
         loggedIn: false,
       });
     });
+  };
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      window.location.reload ();
+      return <Redirect to="/profile" />;
+    }
   };
 
   handleTogglerClick = () => {
@@ -403,6 +411,7 @@ class Navigation extends React.Component {
             </MDBCollapse>
           </MDBContainer>
         </MDBNavbar>
+        {this.renderRedirect ()}
         {this.state.collapsed && overlay}
       </div>
     );

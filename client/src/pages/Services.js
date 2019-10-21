@@ -135,7 +135,7 @@ class ServicesPage extends Component {
                         waves
                       />
                       <MDBCardBody>
-                        <MDBCardTitle>Trigger Piont</MDBCardTitle>
+                        <MDBCardTitle>Trigger Point</MDBCardTitle>
                         <MDBCardText>
                           A trigger point is a tight area within muscle tissue that
                           causes pain in other parts of the body. ... The pain may be

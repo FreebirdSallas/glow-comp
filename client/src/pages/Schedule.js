@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {MDBBtn, MDBView, MDBMask, MDBContainer} from 'mdbreact';
 import API from '../utils/API';
 import Weekcal from '../comps/Weekcal';
-import DateTimePicker from 'react-datetime-picker';
-import Calendar from 'react-calendar';
 
 class SchedulePage extends Component {
   constructor (props) {
@@ -11,16 +9,22 @@ class SchedulePage extends Component {
     this.state = {
       rows: [],
       date: new Date (),
+      events: [],
     };
   }
   componentDidMount () {
-    const script = document.createElement ('script');
-    script.innerHTML = `scheduler.config.xml_date = '%Y-%m-%d %H:%i';
-    scheduler.init ('scheduler_here', new Date (2018, 0, 20), 'month');`;
-    this.instance.appendChild (script);
+    API.getEvents ().then (response => {
+      this.setState ({
+        events: response.data,
+      });
+      console.log (this.state.events);
+      const arr = this.state.events;
+      const script = document.createElement ('script');
+      script.text = `scheduler.config.xml_date = '%Y-%m-%d %H:%i';
+      scheduler.init ('scheduler_here', new Date (), 'month');`;
+      this.instance.appendChild (script);
+    });
   }
-  
-  onChange = date => this.setState ({date});
 
   render () {
     const style = {
@@ -49,7 +53,9 @@ class SchedulePage extends Component {
                 Schedule!
               </MDBBtn> */}
               <Weekcal />
+
               <div ref={el => (this.instance = el)} />
+        
             </MDBContainer>
           </MDBMask>
         </MDBView>

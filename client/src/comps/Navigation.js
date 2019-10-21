@@ -179,8 +179,9 @@ class Navigation extends React.Component {
                     className="white-text"
                     color="indigo"
                     rounded
-                    size="sm">
-                      Schedule
+                    size="sm"
+                  >
+                    Schedule
                   </MDBBtn>
                 </MDBNavItem>
                 <MDBNavItem>
@@ -188,28 +189,25 @@ class Navigation extends React.Component {
                     href="/services"
                     className="white-text"
                     color="indigo"
-                    rounded 
-                    size="sm">
-                      Services
+                    rounded
+                    size="sm"
+                  >
+                    Services
                   </MDBBtn>
                 </MDBNavItem>
 
                 {/* Profile link only displayed if user is logged in */}
                 <MDBNavItem>
-                  {!this.state.loggedIn ? (
-                    <>
-                    </>
-                  ) :
-                  (
-                    <MDBBtn
-                      href="/profile"
-                      className="white-text"
-                      color="indigo"
-                      rounded
-                      size="sm">
+                  {!this.props.loggedIn
+                    ? <div />
+                    : <MDBBtn
+                        href="/profile"
+                        className="white-text"
+                        gradient="aqua"
+                        size="md"
+                      >
                         Profile
-                    </MDBBtn>
-                  )}
+                      </MDBBtn>}
                 </MDBNavItem>
               </MDBNavbarNav>
 
@@ -339,10 +337,7 @@ class Navigation extends React.Component {
                             </div>
 
                             {/* Close Modal Button */}
-                            <MDBBtn
-                              color="indigo"
-                              onClick={this.toggle (1)}
-                            >
+                            <MDBBtn color="indigo" onClick={this.toggle (1)}>
                               CLOSE
                             </MDBBtn>
 
@@ -415,10 +410,7 @@ class Navigation extends React.Component {
                             </div>
 
                             {/* Close Modal Button */}
-                            <MDBBtn
-                              color="indigo"
-                              onClick={this.toggle (1)}
-                            >
+                            <MDBBtn color="indigo" onClick={this.toggle (1)}>
                               CLOSE
                             </MDBBtn>
 

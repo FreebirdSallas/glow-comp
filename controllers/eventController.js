@@ -4,6 +4,7 @@ module.exports = {
   findAll: function (req, res) {
     db.Event
       .find (req.query)
+      .populate ('customers')
       .sort ({date: -1})
       .then (dbEvent => res.json (dbEvent))
       .catch (err => res.status (422).json (err));
@@ -23,7 +24,8 @@ module.exports = {
         console.log (dbModel);
         return db.User.findOneAndUpdate (
           {_id: dbModel.customer},
-          {$push: {events: dbModel._id}}
+          {$push: {events: dbModel._id}},
+          {new: true}
         );
       })
       .then (resp => {

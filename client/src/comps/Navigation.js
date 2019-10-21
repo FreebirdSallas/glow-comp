@@ -150,7 +150,7 @@ class Navigation extends React.Component {
       <div>
         {/* Navbar with brand and links */}
         <MDBNavbar
-          color="blue accent-1"
+          color="indigo accent-1"
           dark
           expand="md"
           fixed="top"
@@ -169,29 +169,53 @@ class Navigation extends React.Component {
             <MDBCollapse isOpen={this.state.collapsed} navbar>
               <MDBNavbarNav left>
                 <MDBNavItem>
-                  <MDBNavLink to="/schedule" className="indigo-text">
-                    Schedule
-                  </MDBNavLink>
+                  <MDBBtn
+                    href="/schedule"
+                    className="white-text"
+                    color="indigo"
+                    rounded
+                    size="sm">
+                      Schedule
+                  </MDBBtn>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink to="/services" className="indigo-text">
-                    Services
-                  </MDBNavLink>
+                  <MDBBtn
+                    href="/services"
+                    className="white-text"
+                    color="indigo"
+                    rounded 
+                    size="sm">
+                      Services
+                  </MDBBtn>
                 </MDBNavItem>
+
+                {/* Profile link only displayed if user is logged in */}
                 <MDBNavItem>
-                  <MDBNavLink to="/profile" className="indigo-text">
-                    Profile
-                  </MDBNavLink>
+                  {!this.state.loggedIn ? (
+                    <>
+                    </>
+                  ) :
+                  (
+                    <MDBBtn
+                      href="/profile"
+                      className="white-text"
+                      color="indigo"
+                      rounded
+                      size="sm">
+                        Profile
+                    </MDBBtn>
+                  )}
                 </MDBNavItem>
               </MDBNavbarNav>
 
-              {/* LogIn/Register Navbar Button */}
+              {/* LogIn/Register Navbar link displayed if user is logged out....Log Out displayed if user is logged in*/}
               <MDBNavbarNav right>
                 <MDBNavItem>
-                  {!this.state.loggedIn ?  (
+                  {!this.state.loggedIn ? (
                     <MDBBtn
                       rounded
-                      className="btn-indigo"
+                      size="sm"
+                      color="indigo"
                       onClick={this.toggle (1)}
                     >
                       Login/Register
@@ -200,7 +224,8 @@ class Navigation extends React.Component {
                   (
                     <MDBBtn
                       rounded
-                      className="btn-indigo"
+                      size="sm"
+                      color="indigo"
                       onClick={this.handleLogOut}
                      >
                       Log Out
@@ -315,7 +340,6 @@ class Navigation extends React.Component {
 
                             {/* Close Modal Button */}
                             <MDBBtn
-                              outline
                               color="indigo"
                               onClick={this.toggle (1)}
                             >
@@ -392,7 +416,6 @@ class Navigation extends React.Component {
 
                             {/* Close Modal Button */}
                             <MDBBtn
-                              outline
                               color="indigo"
                               onClick={this.toggle (1)}
                             >

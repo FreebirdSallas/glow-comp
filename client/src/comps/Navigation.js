@@ -113,6 +113,10 @@ class Navigation extends React.Component {
     // code here to validate user email and password, then take user to profile page
   };
 
+  handleLogOut = () => {
+    console.log('User logged out!');
+  }
+
   handleTogglerClick = () => {
     this.setState ({
       collapsed: !this.state.collapsed,
@@ -135,10 +139,10 @@ class Navigation extends React.Component {
         onClick={this.handleTogglerClick}
       />
     );
+
     return (
       <div>
         {/* Navbar with brand and links */}
-
         <MDBNavbar
           color="blue accent-1"
           dark
@@ -148,18 +152,16 @@ class Navigation extends React.Component {
           transparent
         >
           <MDBContainer>
-            <MDBNavbarBrand>
-              <strong className="indigo-text">Infinite Wellness</strong>
-            </MDBNavbarBrand>
-
-            <MDBNavbarToggler onClick={this.handleTogglerClick} />
-            <MDBCollapse isOpen={this.state.collapsed} navbar>
 
               {/* Navigation Links */}
+            <MDBNavbarBrand>
+              <MDBNavLink to="/">
+                <strong className="indigo-text">Infinite Wellness</strong>
+              </MDBNavLink>
+            </MDBNavbarBrand>
+            <MDBNavbarToggler onClick={this.handleTogglerClick} />
+            <MDBCollapse isOpen={this.state.collapsed} navbar>
               <MDBNavbarNav left>
-                <MDBNavItem active>
-                  <MDBNavLink to="/" className="indigo-text">Home</MDBNavLink>
-                </MDBNavItem>
                 <MDBNavItem>
                   <MDBNavLink to="/schedule" className="indigo-text">
                     Schedule
@@ -180,13 +182,24 @@ class Navigation extends React.Component {
               {/* LogIn/Register Navbar Button */}
               <MDBNavbarNav right>
                 <MDBNavItem>
-                  <MDBBtn
-                    rounded
-                    className="btn-indigo"
-                    onClick={this.toggle (1)}
-                  >
-                    Login/Register
-                  </MDBBtn>
+                  {this.loggedIn && (
+                    <MDBBtn
+                      rounded
+                      className="btn-indigo"
+                      onClick={this.toggle (1)}
+                    >
+                      Login/Register
+                    </MDBBtn>
+                  )}
+                  {!this.loggedIn && (
+                    <MDBBtn
+                      rounded
+                      className="btn-indigo"
+                      onClick={this.handleLogOut}
+                     >
+                      Log Out
+                    </MDBBtn>
+                  )}
 
                   {/* LogIn/Register Modal */}
                   <MDBModal

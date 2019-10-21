@@ -35,4 +35,7 @@ export default {
   createEvent: function (eventData) {
     return axios.post ('/api/events', eventData);
   },
+  logUserOut: function() {
+    return axios.post('/auth/user/logout')
+  }
 };

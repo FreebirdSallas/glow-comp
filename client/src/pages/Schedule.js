@@ -28,6 +28,7 @@ class SchedulePage extends Component {
       }
     });
   }
+  
   onChange = date => this.setState ({date});
   
   render () {

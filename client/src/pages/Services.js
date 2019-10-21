@@ -29,17 +29,8 @@ import imageThree from '../assets/img/massage-2722936_1920.jpg';
 
 import '../assets/css/service.css';
 class ServicesPage extends Component {
-  state = {
-    collapsed: false,
-  };
 
-  handleTogglerClick = () => {
-    this.setState ({
-      collapsed: !this.state.collapsed,
-    });
-  };
-
-  render () {
+  render() {
     return (
       <div>
         <MDBView
@@ -48,128 +39,242 @@ class ServicesPage extends Component {
         >
           <MDBMask className="rgba-white-light d-flex justify-content-center align-items-center">
             <MDBContainer>
-              <MDBRow className="header-service">
-                <MDBCol md="12" className="sm-4 indigo-text text-center">
+              <MDBRow>
+                <MDBCol md="12" className="mb-4 white-text text-center">
                   <h1 className="display-3 mb-0 pt-md-5 pt-5 indigo-text font-weight-bold">
                     SERVICES
                   </h1>
-                  <hr className="hr-light my-2" />
-                  <h5 className="pt-sm-3 pb-md-5 white-text font-weight-bold">
+                  <hr className="hr-light my-4" />
+                  <h5 className="text-uppercase pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 indigo-text font-weight-bold">
                     I take pride in knowing what will work best for you, if you ever need any feed
-                    back on what service will work for you, please feel free to contact me.
+                    back on what service you are seeking, please feel free to contact me.
                   </h5>
                 </MDBCol>
               </MDBRow>
-              <MDBRow className="service-cards">
-                <MDBCol md="4">
-                  <MDBAnimation reveal type="fadeInLeft">
-                    <MDBCard>
-                      <MDBCardImage
-                        className="massage-img img-fluid"
-                        src={image}
-                        waves
-                      />
-                      <MDBCardBody>
-                        <MDBCardTitle>Deep Tissue</MDBCardTitle>
-                        <MDBCardText>
-                          Deep tissue massage is a type of massage therapy that
-                          focuses on relaxing deeper layers of muscles and connective tissue.
-                          It is especially helpful for chronic aches and pains and
-                          contracted areas such as stiff neck and upper back, low back pain,
-                          leg muscle tightness, and sore shoulders.
-                        </MDBCardText>
-                        <MDBDropdown dropup>
-                          <MDBDropdownToggle caret color="primary">
-                            <MDBIcon far icon="clock" />
-                          </MDBDropdownToggle>
-                          <MDBDropdownMenu basic>
-                            <MDBDropdownItem header>
-                              Session Durations
-                            </MDBDropdownItem>
-                            <MDBDropdownItem>60 min</MDBDropdownItem>
-                            <MDBDropdownItem>90 min</MDBDropdownItem>
-                            <MDBDropdownItem>120 min</MDBDropdownItem>
-                          </MDBDropdownMenu>
-                        </MDBDropdown>
-                      </MDBCardBody>
-                    </MDBCard>
-                  </MDBAnimation>
-                </MDBCol>
-                <MDBCol md="4">
-                  <MDBAnimation reveal type="fadeInDown">
-                    <MDBCard>
-                      <MDBCardImage
-                        className="massage-img img-fluid"
-                        src={imageTwo}
-                        waves
-                      />
-                      <MDBCardBody>
-                        <MDBCardTitle>Shiatsu</MDBCardTitle>
-                        <MDBCardText>
-                          Shiatsu massage is best for people who want to feel relaxed
-                          and relieve stress, pain, and tension. It's a Japanese type
-                          of massage that: promotes emotional and physical calm and relaxation.
-                        </MDBCardText>
-                        <MDBDropdown dropup>
-                          <MDBDropdownToggle caret color="primary">
-                            <MDBIcon far icon="clock" />
-                          </MDBDropdownToggle>
-                          <MDBDropdownMenu basic>
-                            <MDBDropdownItem header>
-                              Session Durations
-                            </MDBDropdownItem>
-                            <MDBDropdownItem>90 min</MDBDropdownItem>
-                            <MDBDropdownItem>120 min</MDBDropdownItem>
-                          </MDBDropdownMenu>
-                        </MDBDropdown>
-                      </MDBCardBody>
-                    </MDBCard>
-                  </MDBAnimation>
-                </MDBCol>
-                <MDBCol md="4">
-                  <MDBAnimation reveal type="fadeInRight">
-                    <MDBCard>
-                      <MDBCardImage
-                        className="massage-img img-fluid"
-                        src={imageThree}
-                        waves
-                      />
-                      <MDBCardBody>
-                        <MDBCardTitle>Trigger Point</MDBCardTitle>
-                        <MDBCardText>
-                          A trigger point is a tight area within muscle tissue that
-                          causes pain in other parts of the body. ... The pain may be
-                          sharp and intense or a dull ache. Trigger point massage
-                          therapy is specifically designed to alleviate the source of
-                          the pain through cycles of isolated pressure and release.
-                        </MDBCardText>
-                        <MDBDropdown dropup>
-                          <MDBDropdownToggle caret color="primary">
-                            <MDBIcon far icon="clock" />
-                          </MDBDropdownToggle>
-                          <MDBDropdownMenu basic>
-                            <MDBDropdownItem header>
-                              Session Durations
-                            </MDBDropdownItem>
-                            <MDBDropdownItem>60 min</MDBDropdownItem>
-                            <MDBDropdownItem>90 min</MDBDropdownItem>
-                          </MDBDropdownMenu>
-                        </MDBDropdown>
-                      </MDBCardBody>
-                    </MDBCard>
-                  </MDBAnimation>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow className="schedule-row">
-                <MDBCol md="12" className="text-center">
-                  <MDBBtn>
-                    Schedule Now!
-                  </MDBBtn>
-                </MDBCol>
-              </MDBRow>
+
             </MDBContainer>
           </MDBMask>
         </MDBView>
+        <main>
+          <MDBContainer>
+            <MDBRow className="pt-5">
+              <MDBCol md="4" className="text-center">
+                <MDBAnimation reveal type="fadeInUp">
+                  <MDBCard cascade className="my-3 grey lighten-4">
+                    <MDBCardImage
+                      cascade
+                      className="massage-img img-fluid"
+                      src={image}
+                      waves
+                    />
+                    <MDBCardBody cascade className="text-center">
+                    <MDBCardTitle>
+                        <strong>DEEP TISSUE</strong>
+                      </MDBCardTitle>
+                      <MDBCardText>
+                        Deep tissue massage is a type of massage therapy that
+                        focuses on relaxing deeper layers of muscles and connective tissue.
+                        It is especially helpful for chronic aches and pains and
+                        contracted areas such as stiff neck and upper back, low back pain,
+                        leg muscle tightness, and sore shoulders.
+                        </MDBCardText>
+                      <MDBDropdown dropup>
+                        <MDBDropdownToggle caret color="indigo">
+                          <MDBIcon far icon="clock" />
+                        </MDBDropdownToggle>
+                        <MDBDropdownMenu basic>
+                          <MDBDropdownItem header>Session Durations</MDBDropdownItem>
+                          <MDBDropdownItem>60 min</MDBDropdownItem>
+                          <MDBDropdownItem>90 min</MDBDropdownItem>
+                          <MDBDropdownItem>120 min</MDBDropdownItem>
+                        </MDBDropdownMenu>
+                      </MDBDropdown>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBAnimation>
+              </MDBCol>
+              <MDBCol md="4">
+                <MDBAnimation reveal type="fadeInUp">
+                  <MDBCard cascade className="my-3 grey lighten-4">
+                    <MDBCardImage
+                      cascade
+                      className="massage-img img-fluid"
+                      src={imageTwo}
+                      waves
+                    />
+                    <MDBCardBody cascade className="text-center">
+                    <MDBCardTitle>
+                        <strong>SHIATSU</strong>
+                      </MDBCardTitle>
+                      <MDBCardText>
+                        Shiatsu massage is best for people who want to feel relaxed
+                        and relieve stress, pain, and tension. It's a Japanese type
+                        of massage that: promotes emotional and physical calm and relaxation.
+                        </MDBCardText>
+                      <MDBDropdown dropup>
+                        <MDBDropdownToggle caret color="indigo">
+                          <MDBIcon far icon="clock" />
+                        </MDBDropdownToggle>
+                        <MDBDropdownMenu basic>
+                          <MDBDropdownItem header>Session Durations</MDBDropdownItem>
+                          <MDBDropdownItem>90 min</MDBDropdownItem>
+                          <MDBDropdownItem>120 min</MDBDropdownItem>
+                        </MDBDropdownMenu>
+                      </MDBDropdown>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBAnimation>
+              </MDBCol>
+              <MDBCol md="4">
+                <MDBAnimation reveal type="fadeInUp">
+                  <MDBCard cascade className="my-3 grey lighten-4">
+                    <MDBCardImage
+                      cascade
+                      className="img-fluid"
+                      src={imageThree}
+                    />
+                    <MDBCardBody cascade className="text-center">
+                      <MDBCardTitle>
+                        <strong>TRIGGER POINT</strong>
+                      </MDBCardTitle>
+                      <MDBCardText>
+                        A trigger point is a tight area within muscle tissue that
+                        causes pain in other parts of the body. ... The pain may be
+                        sharp and intense or a dull ache. Trigger point massage
+                        therapy is specifically designed to alleviate the source of
+                        the pain through cycles of isolated pressure and release.
+                      </MDBCardText>
+                      <MDBDropdown dropup>
+                        <MDBDropdownToggle caret color="indigo">
+                          <MDBIcon far icon="clock" />
+                        </MDBDropdownToggle>
+                        <MDBDropdownMenu basic>
+                          <MDBDropdownItem header>Session Durations</MDBDropdownItem>
+                          <MDBDropdownItem>60 min</MDBDropdownItem>
+                          <MDBDropdownItem>90 min</MDBDropdownItem>
+                        </MDBDropdownMenu>
+                      </MDBDropdown>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBAnimation>
+              </MDBCol>
+            </MDBRow>
+            <MDBRow className="pb-5">
+              <MDBCol md="4" className="text-center">
+                <MDBAnimation reveal type="fadeInUp">
+                  <MDBCard cascade className="my-3 grey lighten-4">
+                    <MDBCardImage
+                      cascade
+                      className="massage-img img-fluid"
+                      src={image}
+                      waves
+                    />
+                    <MDBCardBody cascade className="text-center">
+                    <MDBCardTitle>
+                        <strong>DEEP TISSUE</strong>
+                      </MDBCardTitle>
+                      <MDBCardText>
+                        Deep tissue massage is a type of massage therapy that
+                        focuses on relaxing deeper layers of muscles and connective tissue.
+                        It is especially helpful for chronic aches and pains and
+                        contracted areas such as stiff neck and upper back, low back pain,
+                        leg muscle tightness, and sore shoulders.
+                        </MDBCardText>
+                      <MDBDropdown dropup>
+                        <MDBDropdownToggle caret color="indigo">
+                          <MDBIcon far icon="clock" />
+                        </MDBDropdownToggle>
+                        <MDBDropdownMenu basic>
+                          <MDBDropdownItem header>Session Durations</MDBDropdownItem>
+                          <MDBDropdownItem>60 min</MDBDropdownItem>
+                          <MDBDropdownItem>90 min</MDBDropdownItem>
+                          <MDBDropdownItem>120 min</MDBDropdownItem>
+                        </MDBDropdownMenu>
+                      </MDBDropdown>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBAnimation>
+              </MDBCol>
+              <MDBCol md="4">
+                <MDBAnimation reveal type="fadeInUp">
+                  <MDBCard cascade className="my-3 grey lighten-4">
+                    <MDBCardImage
+                      cascade
+                      className="massage-img img-fluid"
+                      src={imageTwo}
+                      waves
+                    />
+                    <MDBCardBody cascade className="text-center">
+                    <MDBCardTitle>
+                        <strong>SHIATSU</strong>
+                      </MDBCardTitle>
+                      <MDBCardText>
+                        Shiatsu massage is best for people who want to feel relaxed
+                        and relieve stress, pain, and tension. It's a Japanese type
+                        of massage that: promotes emotional and physical calm and relaxation.
+                        </MDBCardText>
+                      <MDBDropdown dropup>
+                        <MDBDropdownToggle caret color="indigo">
+                          <MDBIcon far icon="clock" />
+                        </MDBDropdownToggle>
+                        <MDBDropdownMenu basic>
+                          <MDBDropdownItem header>Session Durations</MDBDropdownItem>
+                          <MDBDropdownItem>90 min</MDBDropdownItem>
+                          <MDBDropdownItem>120 min</MDBDropdownItem>
+                        </MDBDropdownMenu>
+                      </MDBDropdown>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBAnimation>
+              </MDBCol>
+              <MDBCol md="4">
+                <MDBAnimation reveal type="fadeInUp">
+                  <MDBCard cascade className="my-3 grey lighten-4">
+                    <MDBCardImage
+                      cascade
+                      className="img-fluid"
+                      src={imageThree}
+                    />
+                    <MDBCardBody cascade className="text-center">
+                      <MDBCardTitle>
+                        <strong>TRIGGER POINT</strong>
+                      </MDBCardTitle>
+                      <MDBCardText>
+                        A trigger point is a tight area within muscle tissue that
+                        causes pain in other parts of the body. ... The pain may be
+                        sharp and intense or a dull ache. Trigger point massage
+                        therapy is specifically designed to alleviate the source of
+                        the pain through cycles of isolated pressure and release.
+                      </MDBCardText>
+                      <MDBDropdown dropup>
+                        <MDBDropdownToggle caret color="indigo">
+                          <MDBIcon far icon="clock" />
+                        </MDBDropdownToggle>
+                        <MDBDropdownMenu basic>
+                          <MDBDropdownItem header>Session Durations</MDBDropdownItem>
+                          <MDBDropdownItem>60 min</MDBDropdownItem>
+                          <MDBDropdownItem>90 min</MDBDropdownItem>
+                        </MDBDropdownMenu>
+                      </MDBDropdown>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBAnimation>
+              </MDBCol>
+            </MDBRow>
+            <MDBRow className="py-5 text-center">
+              <MDBCol>
+                <MDBBtn
+                  href="/schedule"
+                  color="indigo"
+                  
+                 >
+                  Book Now!
+                </MDBBtn>
+              </MDBCol>
+            </MDBRow>
+
+          </MDBContainer>
+        </main>
       </div>
     );
   }

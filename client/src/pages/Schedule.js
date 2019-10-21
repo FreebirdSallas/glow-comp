@@ -19,6 +19,7 @@ class SchedulePage extends Component {
     scheduler.init ('scheduler_here', new Date (2018, 0, 20), 'month');`;
     this.instance.appendChild (script);
   }
+  
   onChange = date => this.setState ({date});
 
   render () {

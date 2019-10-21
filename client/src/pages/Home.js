@@ -9,8 +9,8 @@ import {
 } from "mdbreact";
 
 class HomePage extends Component {
-
   render () {
+    
     return (
       <div>
         <MDBView
@@ -31,9 +31,6 @@ class HomePage extends Component {
                   <h5 className="text-uppercase pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 white-text font-weight-bold">
                     Jason Novak LMT
                   </h5>
-                  <MDBBtn className="white btn-light-blue" size="lg">
-                    schedule
-                  </MDBBtn>
                   <MDBBtn className="white btn-indigo" size="lg">
                     About me
                   </MDBBtn>

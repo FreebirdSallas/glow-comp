@@ -30,13 +30,6 @@ import imageThree from "../assets/img/massage-2722936_1920.jpg";
 import "../assets/css/service.css";
 class ServicesPage extends Component {
 
-  componentDidMount() {
-    document.querySelector("nav").style.height = "65px";
-  }
-  componentWillUnmount() {
-    document.querySelector("nav").style.height = "auto";
-  }
-
   render() {
     return (
       <div>

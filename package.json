@@ -37,6 +37,7 @@
     "mongoose": "^5.7.5",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "react-calendar": "^2.19.2"
+    "react-calendar": "^2.19.2",
+    "react-datetime-picker": "^2.7.1"
   }
 }

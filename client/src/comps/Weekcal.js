@@ -18,6 +18,7 @@ export default function Calendar () {
       </div>
       <div className="dhx_cal_header" />
       <div className="dhx_cal_data" />
+
     </div>
   );
 }

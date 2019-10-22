@@ -23,16 +23,17 @@ const EventTable = props => {
   for (var i = 0; i < props.rows.length; i++) {
     var obj = {};
     obj.id = i + 1;
-    obj.date = props.rows[i].date;
-    obj.kind = props.rows[i].massType;
+    obj.date = props.rows[i].start_date;
+    obj.kind = props.rows[i].text;
     rows.push (obj);
+    console.log (obj);
   }
 
   //   console.log (props.rows);
 
   return (
     <div>
-      <MDBTable>
+      <MDBTable striped>
         <MDBTableHead columns={columns} />
         <MDBTableBody rows={rows} />
       </MDBTable>

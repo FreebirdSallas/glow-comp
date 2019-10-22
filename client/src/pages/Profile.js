@@ -8,27 +8,30 @@ class ProfilePage extends Component {
     super (props);
     this.state = {
       rows: [],
+      email: '',
     };
   }
 
   componentDidMount () {
-    API.isLoggedIn ().then (response => {
-      console.log (response);
-
-      if (response.data.user) {
-        API.getUser (response.data.user._id).then (response => {
-          console.log (response.data._doc);
-          this.setState ({
-            rows: response.data._doc.events,
-          });
-        });
-      } else {
-        //something that removes table and tells them to log in
-      }
-    });
+    API.isLoggedIn ()
+      .then (response => {
+        if (response.status !== 422) {
+          return API.getUserEvent (response.data.user._id)
+            .then (response => {
+              this.setState ({
+                rows: response.data.events,
+                email: response.data.email,
+              });
+              console.log (this.state.rows);
+            })
+            .catch (err => console.log (err));
+        }
+      })
+      .catch (err => console.log (err));
   }
-  
+
   render () {
+      
     return (
       <div>
         <MDBView
@@ -37,9 +40,11 @@ class ProfilePage extends Component {
         >
           <MDBMask className="rgba-white-light d-flex justify-content-center align-items-center">
             <MDBContainer className="bg-light">
-              <MDBBtn>
-                Profile Page!
-              </MDBBtn>
+
+              {this.state.email
+                ? <h2 className="display-4">{this.state.email}</h2>
+                : 'No profile found'}
+
               <EventTable rows={this.state.rows} />
 
             </MDBContainer>

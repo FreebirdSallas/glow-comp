@@ -24,7 +24,9 @@ export default {
   getEvent: function (id) {
     return axios.get ('/api/events/' + id);
   },
-  getUserEvent: function (id) {},
+  getUserEvent: function (id) {
+    return axios.get ('/api/events/user/' + id);
+  },
 
   loginUser: function (userPlusPass) {
     return axios.post ('/auth/user/login', userPlusPass);
@@ -35,7 +37,7 @@ export default {
   createEvent: function (eventData) {
     return axios.post ('/api/events', eventData);
   },
-  logUserOut: function() {
-    return axios.post('/auth/user/logout')
-  }
+  logUserOut: function () {
+    return axios.post ('/auth/user/logout');
+  },
 };

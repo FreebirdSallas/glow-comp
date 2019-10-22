@@ -11,23 +11,16 @@ class App extends Component {
     this.state = {
       email: '',
       loggedIn: false,
+      id: '',
     };
   }
   componentDidMount () {
     API.isLoggedIn ().then (response => {
-      console.log (response);
-
       if (response.data.user) {
-        API.getUser (response.data.user._id).then (response => {
-          console.log (response.data._doc);
-          this.setState ({
-            rows: response.data._doc.events,
-            loggedIn: true
-          });
-         
+        this.setState ({
+          id: response.data.user._id,
+          loggedIn: true,
         });
-      } else {
-        
       }
     });
   }
@@ -35,7 +28,7 @@ class App extends Component {
   render () {
     return (
       <Router>
-        <Navigation loggedIn={this.state.loggedIn}/>
+        <Navigation loggedIn={this.state.loggedIn} />
         <Routes />
 
         <MDBFooter color="indigo">

@@ -26,14 +26,14 @@ import API from '../utils/API';
 
 // Form input text color
 const formInput = {
-  color: '#000',
+  color: '#3f51b5',
 };
 
 class Navigation extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
-      collapsed: false,
+      collapseID: '',
       modal1: false,
       modal2: false,
       modal3: false,
@@ -125,14 +125,18 @@ class Navigation extends React.Component {
   renderRedirect = () => {
     if (this.state.redirect) {
       window.location.reload ();
-      return <Redirect to="/profile" />;
+      return <Redirect to='/profile' />;
     }
   };
 
-  handleTogglerClick = () => {
-    this.setState ({
-      collapsed: !this.state.collapsed,
-    });
+  toggleCollapse = collapseID => () =>
+    this.setState(prevState => ({
+      collapseID: prevState.collapseID !== collapseID ? collapseID : ''
+    }));
+
+  closeCollapse = collapseID => () => {
+    window.scrollTo(0, 0);
+    this.state.collapseID === collapseID && this.setState({ collapseID: '' });
   };
 
   componentDidMount () {
@@ -143,54 +147,64 @@ class Navigation extends React.Component {
   }
 
   render () {
-    const overlay = (
-      <div
-        id="sidenav-overlay"
-        style={{backgroundColor: 'dark'}}
-        onClick={this.handleTogglerClick}
-      />
-    );
+
+        //  overlay isn't doing anything
+    // const overlay = (
+    //   <div
+    //     id='sidenav-overlay'
+    //     style={{backgroundColor: 'indigo'}}
+    //     onClick={this.toggleCollapse('mainNavbarCollapse')}
+    //   />
+    // );
 
     return (
-      <div>
+      <>
         {/* Navbar with brand and links */}
         <MDBNavbar
-          color="indigo accent-1"
+          color='indigo lighten-4'
           dark
-          expand="md"
-          fixed="top"
+          expand='md'
+          fixed='top'
           scrolling
           transparent
         >
-          <MDBContainer>
+          
 
             {/* Navigation Links */}
-            <MDBNavbarBrand>
-              <MDBNavLink to="/">
-                <strong className="indigo-text">Infinite Wellness</strong>
-              </MDBNavLink>
+            <MDBNavbarBrand
+              href='/'
+              className='py-0 indigo-text font-weight-bold'
+              onClick={this.closeCollapse('mainNavbarCollapse')}
+            >
+              <strong className='align-middle'>Infinite Wellness</strong>
             </MDBNavbarBrand>
-            <MDBNavbarToggler onClick={this.handleTogglerClick} />
-            <MDBCollapse isOpen={this.state.collapsed} navbar>
+            <MDBNavbarToggler
+              onClick={this.toggleCollapse('mainNavbarCollapse')}
+              className
+            />
+            <MDBCollapse
+              id='mainNavbarCollapse'
+              isOpen={this.state.collapseID}
+              navbar
+              
+            >
               <MDBNavbarNav left>
                 <MDBNavItem>
                   <MDBBtn
-                    href="/schedule"
-                    className="white-text"
-                    color="indigo"
-                    rounded
-                    size="sm"
+                    href='/schedule'
+                    className='white-text btn-indigo'
+                    size='md'
+                    onClick={this.closeCollapse('mainNavbarCollapse')}
                   >
                     Schedule
                   </MDBBtn>
                 </MDBNavItem>
                 <MDBNavItem>
                   <MDBBtn
-                    href="/services"
-                    className="white-text"
-                    color="indigo"
-                    rounded
-                    size="sm"
+                    href='/services'
+                    className='white-text btn-indigo'
+                    size='md'
+                    onClick={this.closeCollapse('mainNavbarCollapse')}
                   >
                     Services
                   </MDBBtn>
@@ -201,10 +215,10 @@ class Navigation extends React.Component {
                   {!this.props.loggedIn
                     ? <div />
                     : <MDBBtn
-                        href="/profile"
-                        className="white-text"
-                        gradient="aqua"
-                        size="md"
+                        href='/profile'
+                        className='white-text btn-indigo'
+                        size='md'
+                        onClick={this.closeCollapse('mainNavbarCollapse')}
                       >
                         Profile
                       </MDBBtn>}
@@ -217,22 +231,24 @@ class Navigation extends React.Component {
                   {!this.props.loggedIn
                     ? <MDBBtn
                         rounded
-                        className="btn-indigo"
+                        className='btn-indigo'
                         onClick={this.toggle (1)}
+                        size='md'
                       >
                         Login/Register
                       </MDBBtn>
                     : <MDBBtn
                         rounded
-                        className="btn-indigo"
+                        className='btn-indigo'
                         onClick={this.handleLogOut}
+                        size='md'
                       >
                         Log Out
                       </MDBBtn>}
 
                   {/* LogIn/Register Modal */}
                   <MDBModal
-                    className="form-cascading"
+                    className='form-cascading'
                     isOpen={this.state.modal1}
                     toggle={this.toggle (1)}
                   >
@@ -240,8 +256,8 @@ class Navigation extends React.Component {
                     {/* Modal Navigation using tabs for Login(tab 1) or Register(tab 2) */}
                     <MDBNav
                       tabs
-                      className="md-tabs nav-justified tabs-2 indigo"
-                      style={{margin: '-1.5rem 1rem 0 1rem'}}
+                      className='md-tabs nav-justified tabs-2 indigo'
+                      style={{margin: '-0.5rem 1rem 0 1rem'}}
                     >
                       {/* LogIn Tab Link */}
                       <MDBNavItem>
@@ -249,10 +265,10 @@ class Navigation extends React.Component {
                           className={
                             this.state.activeItem === 1 ? 'active' : ''
                           }
-                          to="#"
+                          to='#'
                           onClick={this.toggleTab ('1')}
                         >
-                          <MDBIcon icon="user" className="mr-1" />
+                          <MDBIcon icon='user' className='mr-1' />
                           Log In
                         </MDBNavLink>
                       </MDBNavItem>
@@ -263,10 +279,10 @@ class Navigation extends React.Component {
                           className={
                             this.state.activeItem === 2 ? 'active' : ''
                           }
-                          to="#"
+                          to='#'
                           onClick={this.toggleTab ('2')}
                         >
-                          <MDBIcon icon="user-plus" className="mr-1" />
+                          <MDBIcon icon='user-plus' className='mr-1' />
                           Register
                         </MDBNavLink>
                       </MDBNavItem>
@@ -275,69 +291,71 @@ class Navigation extends React.Component {
                     <MDBTabContent activeItem={this.state.activeItem}>
 
                       {/* LogIn Tab */}
-                      <MDBTabPane tabId="1">
-                        <MDBModalBody className="mx-3">
-                          <form className="mx-3 grey-text">
+                      <MDBTabPane tabId='1'>
+                        <MDBModalBody className='mx-3'>
+                          <form className='mx-3 grey-text'>
                             <MDBInput
                               style={formInput}
-                              name="email"
-                              label="Your email"
+                              name='email'
+                              label='Your email'
+                              background
                               group
-                              type="email"
+                              type='email'
                               validate
-                              error="wrong"
-                              success="right"
+                              error='wrong'
+                              success='right'
                               value={this.state.email}
                               onChange={this.handleChange}
                             />
                             <MDBInput
                               style={formInput}
-                              name="password"
-                              label="Your password"
+                              name='password'
+                              label='Your password'
+                              background
                               group
-                              type="password"
+                              type='password'
                               value={this.state.password}
                               onChange={this.handleChange}
                               validate
                             />
                           </form>
                         </MDBModalBody>
-                        <MDBModalFooter className="justify-content-center mx-3">
+                        <MDBModalFooter className='justify-content-center mx-3'>
 
                           {/* LogIn Button to use handleLogin function submitting user's email and password for validation  */}
                           <MDBBtn
-                            className="mb-4"
-                            color="indigo"
+                            className='mb-4'
+                            color='indigo'
                             onClick={this.handleLogin}
                           >
                             LOG IN
                             {' '}
-                            <MDBIcon icon="sign-in-alt" className="ml-1" />
+                            <MDBIcon icon='sign-in-alt' className='ml-1' />
                           </MDBBtn>
 
                           {/* Shortcut links to Register tab or Forgot Password Modal/Page */}
                           <MDBRow
-                            className="w-100 justify-content-start pt-4"
+                            className='w-100 justify-content-start pt-4'
                             style={{borderTop: '1px solid #e9ecef'}}
                           >
-                            <div id="options">
-                              <p className="font-weight-bold">
+                            <div id='options'>
+                              <p className='font-weight-bold'>
                                 <span
-                                  className="indigo-text ml-1"
+                                  className='indigo-text ml-1'
                                   onClick={this.toggleTab ('2')}
                                 >
                                   New? Sign Up
                                 </span>
                               </p>
-                              <p className="font-weight-bold">
-                                <span className="indigo-text ml-1">
+                              <p className='font-weight-bold'>
+                                <span className='indigo-text ml-1'>
                                   Forgot password?
                                 </span>
                               </p>
                             </div>
 
                             {/* Close Modal Button */}
-                            <MDBBtn color="indigo" onClick={this.toggle (1)}>
+                            <MDBBtn color='indigo' onClick={this.toggle (1)}>
                               CLOSE
                             </MDBBtn>
 
@@ -346,62 +364,65 @@ class Navigation extends React.Component {
                       </MDBTabPane>
 
                       {/* Register Tab */}
-                      <MDBTabPane tabId="2">
-                        <MDBModalBody className="mx-3">
-                          <form className="mx-3 text-light">
+                      <MDBTabPane tabId='2'>
+                        <MDBModalBody className='mx-3'>
+                          <form className='mx-3 text-light'>
                             <MDBInput
                               style={formInput}
-                              name="email"
-                              label="Your email"
+                              name='email'
+                              label='Your email'
+                              background
                               group
-                              type="email"
+                              type='email'
                               validate
-                              error="wrong"
-                              success="right"
+                              error='wrong'
+                              success='right'
                               value={this.state.email}
                               onChange={this.handleChange}
                             />
                             <MDBInput
                               style={formInput}
-                              label="Your password"
+                              label='Your password'
+                              background
                               group
-                              type="password"
-                              name="password"
+                              type='password'
+                              name='password'
                               value={this.state.password}
                               onChange={this.handleChange}
                               validate
                             />
                             <MDBInput
                               style={formInput}
-                              label="Repeat password"
+                              label='Repeat password'
+                              background
                               group
-                              type="password"
+                              type='password'
                               validate
                             />
                           </form>
                         </MDBModalBody>
-                        <MDBModalFooter className="justify-content-center mx-3">
+                        <MDBModalFooter className='justify-content-center mx-3'>
 
                           {/* Register button captures user input and submits NEW USER OBJECT to database */}
                           <MDBBtn
-                            className="mb-4"
-                            color="indigo"
+                            className='mb-4'
+                            color='indigo'
                             onClick={this.handleRegister}
                           >
                             SIGN UP
-                            <MDBIcon icon="sign-in-alt" className="ml-1" />
+                            <MDBIcon icon='sign-in-alt' className='ml-1' />
                           </MDBBtn>
 
                           {/* Shortcut links to LogIn tab if user already has an account set up */}
                           <MDBRow
-                            className="w-100 justify-content-start pt-4"
+                            className='w-100 justify-content-start pt-4'
                             style={{borderTop: '1px solid #e9ecef'}}
                           >
-                            <div id="options">
-                              <p className="font-weight-bold indigo-text">
+                            <div id='options'>
+                              <p className='font-weight-bold indigo-text'>
                                 Already have an account?
                                 <span
-                                  className="indigo-text ml-1"
+                                  className='indigo-text ml-1'
                                   onClick={this.toggleTab ('1')}
                                 >
                                   Log in
@@ -410,7 +431,7 @@ class Navigation extends React.Component {
                             </div>
 
                             {/* Close Modal Button */}
-                            <MDBBtn color="indigo" onClick={this.toggle (1)}>
+                            <MDBBtn color='indigo' onClick={this.toggle (1)}>
                               CLOSE
                             </MDBBtn>
 
@@ -422,11 +443,11 @@ class Navigation extends React.Component {
                 </MDBNavItem>
               </MDBNavbarNav>
             </MDBCollapse>
-          </MDBContainer>
+          
         </MDBNavbar>
         {this.renderRedirect ()}
-        {this.state.collapsed && overlay}
-      </div>
+        {this.state.collapsed /*&& overlay --no changes when removing this code*/}
+      </>
     );
   }
 }

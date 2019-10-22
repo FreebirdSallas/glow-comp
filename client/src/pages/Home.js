@@ -29,7 +29,7 @@ class HomePage extends Component {
                   </h1>
                   <hr className="hr-light my-4" />
                   <h5 className="text-uppercase pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 white-text font-weight-bold">
-                    Jason Novak LMT
+                    Jason Novak LMT RYT-200
                   </h5>
                   <MDBBtn className="white btn-indigo" size="lg">
                     About me

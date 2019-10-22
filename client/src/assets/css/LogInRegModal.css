@@ -19,3 +19,12 @@
 .form-cascading #options p span{
   cursor: pointer;
 }
+a.btn-default{
+    width: 100px;
+    height: 75%;
+    margin-right: 10px;
+    transform: scale(1.09);
+}
+a.btn-default:first-of-type{
+    margin-left: 15px;
+}

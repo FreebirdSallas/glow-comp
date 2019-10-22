@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Route, Switch} from 'react-router-dom';
 
 import HomePage from './pages/Home';
 import ProfilePage from './pages/Profile';
@@ -8,7 +8,7 @@ import ServicesPage from './pages/Services';
 import NotFoundPage from './pages/NotFound';
 
 class Routes extends Component {
-  render() {
+  render () {
     return (
       <Switch>
         <Route exact path="/" component={HomePage} />

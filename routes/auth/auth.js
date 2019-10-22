@@ -7,7 +7,7 @@ router.route ('/').get ((req, res, next) => {
     console.log ('found user, logging in');
     res.json ({user: req.user});
   } else {
-    res.json ({user: null});
+    res.status (422).json ({user: null});
   }
 });
 

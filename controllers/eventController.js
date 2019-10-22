@@ -48,8 +48,7 @@ module.exports = {
   },
   // technically uses the user database, but I put it here. returns events tied to a users ID
   findUserEvents: function (req, res) {
-    db.User.findById (req.params.id).then (response => {
-      console.log (response);
+    db.User.findById (req.params.id).populate ('events').then (response => {
       res.json (response);
     });
   },

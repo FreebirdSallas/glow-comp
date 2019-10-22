@@ -20,7 +20,7 @@
   cursor: pointer;
 }
 a.btn-default{
-    width: 100px;
+    width: 10rem;
     height: 75%;
     margin-right: 10px;
     transform: scale(1.09);

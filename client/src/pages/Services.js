@@ -27,6 +27,9 @@ import imageTwo from '../assets/img/essential-oils-1433692_1920.jpg';
 import imageThree from '../assets/img/massage-2722936_1920.jpg';
 // Image by <a href='https://pixabay.com/users/whitesession-4645995/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2722936'>Angelo Esslinger</a> from <a href='https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2722936'>Pixabay</a>
 
+import imagePrenatal from '../assets/img/prenatal.jpg';
+// Image by https://images.ctfassets.net/wy4h2xf1swlt/asset_64130/64b9ff3f6ee16734b26ab7f093e04641/massage-during-pregnancy_YF.jpg
+
 class ServicesPage extends Component {
 
   render() {
@@ -96,27 +99,27 @@ class ServicesPage extends Component {
                   <MDBCard cascade className='my-3 grey lighten-4'>
                     <MDBCardImage
                       cascade
-                      className='massage-img img-fluid'
-                      src={imageTwo}
-                      waves
+                      className='img-fluid'
+                      src={imagePrenatal}
                     />
                     <MDBCardBody cascade className='text-center'>
                       <MDBCardTitle>
-                        <strong>SHIATSU</strong>
+                        <strong>PRENATAL</strong>
                       </MDBCardTitle>
                       <MDBCardText>
-                        Shiatsu massage is best for people who want to feel relaxed
-                        and relieve stress, pain, and tension. It's a Japanese type
-                        of massage that: promotes emotional and physical calm and relaxation.
-                        </MDBCardText>
+                        Therapeutic bodywork that focuses on the special needs of the mother-to-be 
+                        as her body goes through the dramatic changes of pregnancy. It enhances the 
+                        function of muscles and joints, improves circulation and general body tone, 
+                        and relieves mental and physical fatigue.
+                      </MDBCardText>
                       <MDBDropdown dropup>
                         <MDBDropdownToggle caret color='indigo'>
                           <MDBIcon far icon='clock' />
                         </MDBDropdownToggle>
                         <MDBDropdownMenu basic>
                           <MDBDropdownItem header>Session Durations</MDBDropdownItem>
+                          <MDBDropdownItem>60 min</MDBDropdownItem>
                           <MDBDropdownItem>90 min</MDBDropdownItem>
-                          <MDBDropdownItem>120 min</MDBDropdownItem>
                         </MDBDropdownMenu>
                       </MDBDropdown>
                     </MDBCardBody>
@@ -231,7 +234,7 @@ class ServicesPage extends Component {
                     <MDBCardImage
                       cascade
                       className='img-fluid'
-                      src={imageThree}
+                      src={imagePrenatal}
                     />
                     <MDBCardBody cascade className='text-center'>
                       <MDBCardTitle>

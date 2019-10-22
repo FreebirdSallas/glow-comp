@@ -8,21 +8,17 @@ const eventSchema = new Schema ({
     ref: 'User',
     required: true,
   },
-  massType: {
+  start_date: {
+    type: Date,
+    required: true,
+  },
+  end_date: {
+    type: Date,
+    required: true,
+  },
+  text: {
     type: String,
     required: true,
-  },
-  date: {
-    type: Date,
-    required: true,
-  },
-  startTime: {
-    type: Date,
-    //required: true
-  },
-  endTime: {
-    type: Date,
-    //required: true
   },
 });
 

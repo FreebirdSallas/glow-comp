@@ -16,13 +16,15 @@ class App extends Component {
   }
   componentDidMount () {
     API.isLoggedIn ().then (response => {
-      if (response.data.user) {
+      
+      if (response.data.user !== 'null') {
         this.setState ({
           id: response.data.user._id,
           loggedIn: true,
         });
-      }
-    });
+      } 
+      
+    }).catch(err => console.log(err));
   }
 
   render () {

@@ -34,15 +34,14 @@ class Navigation extends React.Component {
     this.state = {
       collapseID: '',
       modal1: false,
-      modal2: false,
-      modal3: false,
       activeItem: '1',
       email: '',
       password: '',
-      redirect: false,
+      redirect: '0',
       loggedIn: props.loggedIn,
       isCorrect: true,
     };
+    this.toggle = this.toggle.bind(this);
   }
 
   toggle = nr => () => {
@@ -101,7 +100,7 @@ class Navigation extends React.Component {
         if (response.status === 200) {
           this.setState ({
             loggedIn: true,
-            redirect: true,
+            redirect: '1',
           });
         } else if (response.status === 401) {
           console.log ('incorrect password');
@@ -115,17 +114,21 @@ class Navigation extends React.Component {
 
   handleLogOut = () => {
     API.logUserOut ().then (response => {
-      console.log (response);
+     
       this.setState ({
         loggedIn: false,
+        redirect: '2'
       });
     });
   };
 
+  
   renderRedirect = () => {
-    if (this.state.redirect) {
-      window.location.reload ();
+    if (this.state.redirect === '1') {
       return <Redirect to="/profile" />;
+    } else if(this.state.redirect === '2'){
+      
+      return <Redirect to="/" />
     }
   };
 

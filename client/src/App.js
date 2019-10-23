@@ -31,7 +31,7 @@ class App extends Component {
     return (
       <Router>
         <Navigation loggedIn={this.state.loggedIn} />
-        <Routes />
+        <Routes/>
 
         <MDBFooter color="indigo">
           <p className="footer-copyright mb-0 py-3 text-center">

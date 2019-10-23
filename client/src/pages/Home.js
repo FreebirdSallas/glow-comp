@@ -1,39 +1,62 @@
-import React, { Component }  from "react";
+import React, { Component } from 'react';
 import {
   MDBMask,
   MDBRow,
   MDBCol,
   MDBBtn,
   MDBView,
-  MDBContainer
-} from "mdbreact";
+  MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBRotatingCard,
+  MDBAnimation,
+  MDBSmoothScroll,
+  MDBCardImage
+} from 'mdbreact';
+import jason from '../assets/img/jason.jpeg';
+import yogacred from '../assets/img/Novak200.jpg'
 
 class HomePage extends Component {
-  render () {
-    
+  state = {
+    flipped1: false,
+    flipped2: false
+  };
+
+  handleFlipping = id => () => {
+    const cardId = `flipped${id}`;
+    this.setState({ [cardId]: !this.state[cardId] });
+  };
+
+  render() {
+
     return (
       <div>
         <MDBView
           src={`https://mdbootstrap.com/img/Photos/Others/images/76.jpg`}
           fixed
         >
-          <MDBMask className="rgba-white-light d-flex justify-content-center align-items-center">
+          <MDBMask className='rgba-white-light d-flex justify-content-center align-items-center'>
             <MDBContainer>
               <MDBRow>
-                <MDBCol md="12" className="mb-4 white-text text-center">
-                  <h1 className="display-3 mb-0 pt-md-5 pt-5 white-text font-weight-bold">
+                <MDBCol md='12' className='mb-4 white-text text-center'>
+                  <h1 className='display-3 mb-0 pt-md-5 pt-5 white-text font-weight-bold'>
                     INFINITE{' '}
-                    <span className="indigo-text font-weight-bold">
+                    <span className='indigo-text font-weight-bold'>
                       WELLNESS
                     </span>
                   </h1>
-                  <hr className="hr-light my-4" />
-                  <h5 className="text-uppercase pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 white-text font-weight-bold">
-                    Jason Novak LMT RYT-200
-                  </h5>
-                  <MDBBtn className="white btn-indigo" size="lg">
-                    About me
-                  </MDBBtn>
+                  <hr className='hr-light my-4' />
+                  <h2 className='text-uppercase pt-md-5 pt-sm-2 pt-5 white-text font-weight-bold'>
+                    Jason Novak
+                  </h2>
+                  <h3 className='text-uppercase pb-md-5 pb-sm-3 pb-5 white-text font-weight-bold'>
+                    LMT RYT-200
+                  </h3>
+                  <MDBSmoothScroll to='about' smooth>
+                    <MDBBtn className='white btn-indigo' size='lg'>
+                      About me
+                    </MDBBtn>
+                  </MDBSmoothScroll>
                 </MDBCol>
               </MDBRow>
             </MDBContainer>
@@ -41,62 +64,50 @@ class HomePage extends Component {
         </MDBView>
         <main>
           <MDBContainer>
-            <MDBRow className="py-5">
-              <MDBCol md="12" className="text-center">
+            <MDBRow id='about' className='pt-5 justify-content-center'>
+              <MDBCol md='4' style={{ minHeight: '26rem', maxWidth: '22rem' }}>
+                <MDBAnimation reveal type='fadeInUp'>
+
+                  <MDBRotatingCard
+                    flipped={this.state.flipped1}
+                    className='text-center h-100 w-100'
+                  >
+                    <MDBCard cascade className='mt-3 grey lighten-4 face front' onClick={this.handleFlipping(1)}>
+                      <MDBCardImage
+                        cascade
+                        className='img-fluid'
+                        src={jason}
+                        waves
+                      />
+
+                    </MDBCard>
+                    <MDBCard className='face back' onClick={this.handleFlipping(1)}>
+                      <MDBCardBody>
+                        <p>Virginia Department of Health Professions</p>
+                        <p>License Number: </p><a href='https://dhp.virginiainteractive.org/Lookup/Detail/0019014574' target='_blank' rel='noopener noreferrer'>0019014574</a>
+                        <hr />
+                        <MDBCardImage src={yogacred} className='img-fluid' />
+
+                      </MDBCardBody>
+                    </MDBCard>
+                  </MDBRotatingCard>
+                </MDBAnimation>
+              </MDBCol>
+              <MDBCol className='mt-3 mb-5' md='8'>
+                <h3>Jason Novak LMT RYT-200</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                  Graduated from Lotus School of Integrated Professions in March of 2016
+                  and completed his 200 Hour Teacher Training program with Yax Yoga Concepts in April of 2017.
+                  Jason has a passion for body work, inspired by individuals like
+                  <a href='https://rolf.org' target='_blank' rel='noopener noreferrer'> Dr. Ida Rolf</a>,
+                  <a href='https://www.anatomytrains.com/about-us/about-tom-myers/' target='_blank' rel='noopener noreferrer'> Tom Meyers</a>, and
+                  <a href='https://www.myofascialrelease.com/' target='_blank' rel='noopener noreferrer'> John F. Barnes</a>.
                 </p>
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
-                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                  consequuntur magni dolores eos qui ratione voluptatem sequi
-                  nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
-                  dolor sit amet, consectetur, adipisci velit, sed quia non
-                  numquam eius modi tempora incidunt ut labore et dolore magnam
-                  aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-                  nostrum exercitationem ullam corporis suscipit laboriosam,
-                  nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum
-                  iure reprehenderit qui in ea voluptate velit esse quam nihil
-                  molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                  voluptas nulla pariatur?
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </p>
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
-                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                  consequuntur magni dolores eos qui ratione voluptatem sequi
-                  nesciunt. Neque porro quisquam est, qui dolorem ipsum quia
-                  dolor sit amet, consectetur, adipisci velit, sed quia non
-                  numquam eius modi tempora incidunt ut labore et dolore magnam
-                  aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-                  nostrum exercitationem ullam corporis suscipit laboriosam,
-                  nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum
-                  iure reprehenderit qui in ea voluptate velit esse quam nihil
-                  molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                  voluptas nulla pariatur?
-                </p>
+                <p>Sensing your edge and knowing how to hold you there with great awareness,
+                  moving with subtle shifts while allowing you to find balance and ease in your
+                  breath along with looking at the body as a whole and not individual parts, using the
+                  <a href='https://www.anatomytrains.com/fascia/tensegrity/' target='_blank' rel='noopener noreferrer'> "Tensegrity"</a> model,
+                  he is able to find the source of pain and chronic issues, facilitating your body's own healing process.</p>
               </MDBCol>
             </MDBRow>
           </MDBContainer>

@@ -15,23 +15,24 @@ class App extends Component {
     };
   }
   componentDidMount () {
-    API.isLoggedIn ().then (response => {
-      
-      if (response.data.user !== 'null') {
-        this.setState ({
-          id: response.data.user._id,
-          loggedIn: true,
-        });
-      } 
-      
-    }).catch(err => console.log(err));
+    API.isLoggedIn ()
+      .then (response => {
+        if (response.data.user !== 'null') {
+          this.setState ({
+            id: response.data.user._id,
+            loggedIn: true,
+          });
+        }
+        console.log (this.state);
+      })
+      .catch (err => console.log (err));
   }
 
   render () {
     return (
       <Router>
         <Navigation loggedIn={this.state.loggedIn} />
-        <Routes/>
+        <Routes />
 
         <MDBFooter color="indigo">
           <p className="footer-copyright mb-0 py-3 text-center">

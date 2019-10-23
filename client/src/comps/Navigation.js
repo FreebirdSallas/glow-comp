@@ -10,6 +10,7 @@ import {
 } from 'mdbreact';
 import '../assets/css/LogInRegModal.css';
 import {Redirect, NavLink} from 'react-router-dom';
+import NavButton from '../comps/NavButton';
 import API from '../utils/API';
 
 class Navigation extends React.Component {
@@ -18,8 +19,7 @@ class Navigation extends React.Component {
     this.state = {
       collapseID: '',
       activeItem: '1',
-      email: '',
-      password: '',
+
       redirect: false,
       loggedIn: props.loggedIn,
       isCorrect: true,
@@ -29,7 +29,6 @@ class Navigation extends React.Component {
   handleLogOut = () => {
     API.logUserOut ().then (response => {
       this.setState ({
-        loggedIn: false,
         redirect: true,
       });
     });
@@ -53,6 +52,7 @@ class Navigation extends React.Component {
 
   componentDidMount () {
     document.querySelector ('nav').style.height = '65px';
+    console.log (this.state);
   }
   componentWillUnmount () {
     document.querySelector ('nav').style.height = 'auto';
@@ -127,22 +127,11 @@ class Navigation extends React.Component {
 
             {/* LogIn/Register Navbar link displayed if user is logged out....Log Out displayed if user is logged in*/}
             <MDBNavbarNav right>
-              <MDBNavItem>
-                {!this.props.loggedIn
-                  ? <NavLink exact to="/login">
-                      {' '}<MDBBtn className="btn-indigo" size="md">
-                        Login/Register
-                      </MDBBtn>
-                    </NavLink>
-                  : <MDBBtn
-                      className="btn-indigo"
-                      onClick={this.handleLogOut}
-                      size="md"
-                    >
-                      Log Out
-                    </MDBBtn>}
+              <NavButton
+                func={this.handleLogOut}
+                loggedIn={this.state.loggedIn}
+              />
 
-              </MDBNavItem>
             </MDBNavbarNav>
           </MDBCollapse>
           {this.renderRedirect ()}

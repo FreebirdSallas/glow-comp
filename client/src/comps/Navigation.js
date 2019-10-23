@@ -19,16 +19,17 @@ class Navigation extends React.Component {
     this.state = {
       collapseID: '',
       activeItem: '1',
-
       redirect: false,
-      loggedIn: props.loggedIn,
+      loggedIn: false,
       isCorrect: true,
+      id: '',
     };
   }
 
   handleLogOut = () => {
     API.logUserOut ().then (response => {
       this.setState ({
+        loggedIn: false,
         redirect: true,
       });
     });
@@ -37,6 +38,32 @@ class Navigation extends React.Component {
   renderRedirect = () => {
     if (this.state.redirect) {
       return <Redirect to="/" />;
+    }
+  };
+
+  renderLog = () => {
+    if (this.state.loggedIn) {
+      return (
+        <NavButton func={this.handleLogOut} loggedIn={this.state.loggedIn} />
+      );
+    } else {
+      return <NavButton func={this.handleLogOut} />;
+    }
+  };
+
+  // allows the profile button to be rendered after the api call and after the comp mounts
+  renderPro = () => {
+    if (this.state.loggedIn) {
+      return (
+        <MDBBtn
+          href="/profile"
+          className="white-text btn-indigo"
+          size="md"
+          onClick={this.closeCollapse ('mainNavbarCollapse')}
+        >
+          {' '}Profile
+        </MDBBtn>
+      );
     }
   };
 
@@ -52,7 +79,17 @@ class Navigation extends React.Component {
 
   componentDidMount () {
     document.querySelector ('nav').style.height = '65px';
-    console.log (this.state);
+    API.isLoggedIn ()
+      .then (response => {
+        if (response.data.user !== 'null') {
+          this.setState ({
+            id: response.data.user._id,
+            loggedIn: true,
+          });
+        }
+        console.log (this.state);
+      })
+      .catch (err => console.log (err));
   }
   componentWillUnmount () {
     document.querySelector ('nav').style.height = 'auto';
@@ -112,25 +149,13 @@ class Navigation extends React.Component {
 
               {/* Profile link only displayed if user is logged in */}
               <MDBNavItem>
-                {!this.props.loggedIn
-                  ? <div />
-                  : <MDBBtn
-                      href="/profile"
-                      className="white-text btn-indigo"
-                      size="md"
-                      onClick={this.closeCollapse ('mainNavbarCollapse')}
-                    >
-                      Profile
-                    </MDBBtn>}
+                {this.renderPro ()}
               </MDBNavItem>
             </MDBNavbarNav>
 
             {/* LogIn/Register Navbar link displayed if user is logged out....Log Out displayed if user is logged in*/}
             <MDBNavbarNav right>
-              <NavButton
-                func={this.handleLogOut}
-                loggedIn={this.state.loggedIn}
-              />
+              {this.renderLog ()}
 
             </MDBNavbarNav>
           </MDBCollapse>

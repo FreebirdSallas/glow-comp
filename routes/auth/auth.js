@@ -2,9 +2,9 @@ const router = require ('express').Router ();
 const passport = require ('../../passport');
 
 // matches auth/user
+// returns user data if found, returns null if not
 router.route ('/').get ((req, res, next) => {
   if (req.user) {
-    console.log ('found user, logging in');
     res.json ({user: req.user});
   } else {
     res.json ({user: 'null'});

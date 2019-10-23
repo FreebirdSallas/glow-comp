@@ -6,10 +6,10 @@ import ProfilePage from './pages/Profile';
 import SchedulePage from './pages/Schedule';
 import ServicesPage from './pages/Services';
 import NotFoundPage from './pages/NotFound';
-import LoginPage from './pages/LogReg';
+import LoginPage from './pages/Login';
+import RegisterPage from './pages/Register';
 
 class Routes extends Component {
- 
   render () {
     return (
       <Switch>
@@ -18,7 +18,8 @@ class Routes extends Component {
         <Route exact path="/schedule" component={SchedulePage} />
         <Route exact path="/services" component={ServicesPage} />
         <Route exact path="/login" component={LoginPage} />
-       
+        <Route exact path="/register" component={RegisterPage} />
+
         <Route component={NotFoundPage} />
       </Switch>
     );

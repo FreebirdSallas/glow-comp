@@ -11,7 +11,7 @@ import {
   MDBInput,
   MDBCardBody,
 } from 'mdbreact';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import API from '../utils/API';
 
 class LoginPage extends React.Component {
@@ -58,6 +58,7 @@ class LoginPage extends React.Component {
             loggedIn: true,
             redirect: true,
           });
+          window.location.reload ();
         } else if (response.status === 401) {
           this.setState ({
             isCorrect: false,

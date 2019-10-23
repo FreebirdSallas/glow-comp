@@ -9,6 +9,7 @@ import NotFoundPage from './pages/NotFound';
 import LoginPage from './pages/Login';
 import RegisterPage from './pages/Register';
 
+
 class Routes extends Component {
   render () {
     return (

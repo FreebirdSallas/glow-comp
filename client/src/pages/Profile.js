@@ -20,14 +20,16 @@ class ProfilePage extends Component {
       rows: [],
       email: '',
       date: new Date (),
-      time: '10:00',
     };
   }
-  onDateChange = date => this.setState ({date});
-  onTimeChange = time => this.setState ({time});
+  onChange = date => {
+    this.setState ({date});
+    console.log (this.state);
+  };
+
   handleSubmit = event => {
     event.preventDefault ();
-    // submit code
+    console.log (this.state);
   };
 
   componentDidMount () {
@@ -40,7 +42,6 @@ class ProfilePage extends Component {
                 rows: response.data.events,
                 email: response.data.email,
               });
-              console.log (this.state.rows);
             })
             .catch (err => console.log (err));
         }
@@ -78,13 +79,13 @@ class ProfilePage extends Component {
                   </div>
                 : 'No profile found'}
 
-              <EventTable func={this.rowList ()} />
-              <DateTimePick
-                onDate={this.onDateChange}
-                onTime={this.onTimeChange}
-                date={this.state.date}
-                time={this.state.time}
-              />
+              {this.state.rows.length > 0
+                ? <EventTable func={this.rowList ()} />
+                : <div>
+                    <h5>No past or future appointments found</h5>
+                  </div>}
+
+              <DateTimePick func={this.onChange} value={this.state.date} />
             </MDBContainer>
           </MDBMask>
         </MDBView>

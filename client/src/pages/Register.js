@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   MDBIcon,
   MDBView,
@@ -11,7 +11,7 @@ import {
   MDBInput,
   MDBCardBody,
 } from 'mdbreact';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import API from '../utils/API';
 
 class RegisterPage extends React.Component {

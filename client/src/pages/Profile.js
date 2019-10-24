@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {MDBIcon, MDBView, MDBMask, MDBContainer} from 'mdbreact';
 import EventTable from '../comps/EventTable';
-
+import DateTimePicker from 'react-datetime-picker';
 import DateTimePick from '../comps/DateTImePick';
 import API from '../utils/API';
 
@@ -29,7 +29,19 @@ class ProfilePage extends Component {
 
   handleSubmit = event => {
     event.preventDefault ();
-    console.log (this.state);
+    if (this.state.date !== new Date ()) {
+      let obj = {
+        customer: this.state.id,
+        start_date: this.state.date,
+        end_date: this.state.date,
+        text: 'A new event',
+      };
+      API.createEvent (obj)
+        .then (response => {
+          console.log (response);
+        })
+        .catch (err => console.log (err));
+    }
   };
 
   componentDidMount () {
@@ -41,6 +53,7 @@ class ProfilePage extends Component {
               this.setState ({
                 rows: response.data.events,
                 email: response.data.email,
+                id: response.data._id,
               });
             })
             .catch (err => console.log (err));
@@ -85,7 +98,13 @@ class ProfilePage extends Component {
                     <h5>No past or future appointments found</h5>
                   </div>}
 
-              <DateTimePick func={this.onChange} value={this.state.date} />
+              <DateTimePick click={this.handleSubmit}>
+                <DateTimePicker
+                  onChange={this.onChange}
+                  value={this.state.date}
+                />
+
+              </DateTimePick>
             </MDBContainer>
           </MDBMask>
         </MDBView>

@@ -1,7 +1,12 @@
 import React from 'react';
 
-import {MDBContainer, MDBCard, MDBCardBody, MDBCardTitle} from 'mdbreact';
-import DateTimePicker from 'react-datetime-picker';
+import {
+  MDBContainer,
+  MDBCard,
+  MDBBtn,
+  MDBCardBody,
+  MDBCardTitle,
+} from 'mdbreact';
 
 export default function DateTimePick (props) {
   return (
@@ -12,8 +17,9 @@ export default function DateTimePick (props) {
           <MDBCardBody>
             <MDBCardTitle>Click to pick a date and time</MDBCardTitle>
             <div className="d-flex justify-content-around align-items-center">
-              <DateTimePicker onChange={props.func} value={props.val} />
+              {props.children}
             </div>
+            <MDBBtn onClick={props.click}>schedule</MDBBtn>
           </MDBCardBody>
         </MDBCard>
       </div>

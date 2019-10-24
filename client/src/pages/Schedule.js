@@ -1,27 +1,8 @@
 import React, {Component} from 'react';
-import {MDBView, MDBMask, MDBContainer} from 'mdbreact';
+import {MDBView, MDBMask, MDBContainer, MDBBtn} from 'mdbreact';
 import API from '../utils/API';
 import Weekcal from '../comps/Weekcal';
-
-// import scriptCache from '../utils/scriptCache';
-
-// const loadScript = callback => {
-//   const existScript = document.getElementById ('scriptId');
-//   if (!existScript) {
-//     const script = document.createElement ('script');
-//     script.src = '/src/assets/js/cal.js';
-//     script.id = 'cal';
-//     script.type = 'text/javascript';
-//     document.body.appendChild (script);
-
-//     script.onload = () => {
-//       if (callback) callback ();
-//     };
-//   }
-//   if (existScript && callback) {
-//     callback ();
-//   }
-// };
+import {Link} from 'react-router-dom';
 
 class SchedulePage extends Component {
   constructor (props) {
@@ -33,17 +14,23 @@ class SchedulePage extends Component {
     };
   }
 
+  //very fragile, plz be careful
   componentDidMount () {
     API.getEvents ().then (response => {
       this.setState ({
         events: response.data,
       });
-      console.log (this.state.events);
-      //   const arr = this.state.events;
+      const evArray = this.state.events.filter (event => {
+        if (event.start_date && event.end_date && event.text) {
+          return event;
+        }
+      });
+
+      console.log (evArray);
       const script = document.createElement ('script');
-      script.text = `scheduler.config.xml_date = '%Y-%m-%d %H:%i';
-        scheduler.init ('scheduler_here', new Date (), 'month');
-        scheduler.setLoadMode("day"); `;
+      script.innerHTML = `scheduler.config.xml_date = '%Y-%m-%d %H:%i';
+      scheduler.init ('scheduler_here', new Date (), 'month');
+      scheduler.setLoadMode("Week");scheduler.parse('${JSON.stringify (evArray)}');`;
       this.instance.appendChild (script);
     });
   }
@@ -61,24 +48,22 @@ class SchedulePage extends Component {
           src={`https://mdbootstrap.com/img/Photos/Others/images/76.jpg`}
           fixed
         >
-          <MDBMask className="rgba-white-light d-flex justify-content-center align-items-center">
+          <MDBMask className="rgba-white-light d-flex flex-column justify-content-end align-items-center">
+            <h2 className="display-4">Jason's current schedule</h2>
             <MDBContainer style={style}>
 
-              {/* <p>Pick a day and time</p>
-              <Calendar
-                onChange={this.onChange}
-                value={this.state.date}
-                isCalendarOpen
-                view="decade"
-              />
-              <MDBBtn>
-                Schedule!
-              </MDBBtn> */}
               <Weekcal />
 
               <div ref={el => (this.instance = el)} />
-
             </MDBContainer>
+            <h4>Want to schedule an appointment? go to your profile</h4>
+            <MDBBtn
+              href="/profile"
+              size="sm"
+              style={{height: '2rem', marginTop: 10}}
+            >
+              Profile
+            </MDBBtn>
           </MDBMask>
         </MDBView>
       </div>

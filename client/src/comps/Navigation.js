@@ -9,7 +9,7 @@ import {
   MDBBtn,
 } from 'mdbreact';
 import '../assets/css/LogInRegModal.css';
-import {Redirect, NavLink} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import NavButton from '../comps/NavButton';
 import API from '../utils/API';
 

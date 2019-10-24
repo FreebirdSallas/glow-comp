@@ -63,7 +63,7 @@ class HomePage extends Component {
           </MDBMask>
         </MDBView>
         <main>
-          <MDBContainer>
+          <MDBContainer className='mb-2'>
             <MDBRow id='about' className='pt-5 justify-content-center'>
               <MDBCol md='4' style={{ minHeight: '26rem', maxWidth: '22rem' }}>
                 <MDBAnimation reveal type='fadeInUp'>

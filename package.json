@@ -31,7 +31,7 @@
         "@fullcalendar/core": "^4.3.1",
         "@fullcalendar/react": "^4.3.0",
         "@fullcalendar/resource-timegrid": "^4.3.0",
-        "axios": "^0.19.0",
+        "axios": "^0.21.1",
         "bcrypt": "^3.0.6",
         "connect-mongo": "^3.0.0",
         "dotenv": "^8.2.0",
